@@ -292,9 +292,39 @@ li + li {
   }
 }
 
+.project-layout {
+  display: grid;
+  gap: clamp(1.5rem, 3vw, 3rem);
+  align-items: start;
+}
+
+.project-copy,
+.project-side {
+  min-width: 0;
+}
+
+.project-copy section {
+  margin-top: 1.25rem;
+}
+
+.project-copy section p {
+  margin-top: 0;
+}
+
+.project-side {
+  display: grid;
+  place-items: start center;
+}
+
 .project-preview {
   width: min(100%, 30rem);
-  margin: 1.5rem auto;
+  margin: 0;
+}
+
+@media (min-width: 760px) {
+  .project-layout {
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+  }
 }
 
 .project-preview img,
@@ -448,5 +478,35 @@ li + li {
 
   .step-nav {
     display: none;
+  }
+}
+
+@media (min-width: 600px) and (max-width: 1599px) and (min-height: 501px) {
+  .site-shell {
+    display: grid;
+    grid-template-rows: auto minmax(0, 1fr) auto;
+    height: 100svh;
+  }
+
+  .page {
+    grid-template-rows: minmax(0, 1fr);
+    min-height: 0;
+    padding-block: 1rem 0;
+  }
+
+  .frame-stack {
+    height: 100%;
+    max-height: 760px;
+    min-height: 0;
+  }
+
+  .project-frame {
+    height: 100%;
+    min-height: 0;
+  }
+
+  .project-card {
+    min-height: 0;
+    overflow-y: auto;
   }
 }

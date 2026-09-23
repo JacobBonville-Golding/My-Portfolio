@@ -27,50 +27,54 @@ function ProjectPreview({ slide }) {
 
 function ProjectDetails({ slide }) {
   return (
-    <>
-      <p className="tagline">{slide.tagline}</p>
-      <p>{slide.summary}</p>
+    <div className="project-layout">
+      <div className="project-copy">
+        <p className="tagline">{slide.tagline}</p>
+        <p>{slide.summary}</p>
 
-      <ProjectPreview slide={slide} />
+        <section>
+          <h2>What I contributed</h2>
+          <ul>
+            {slide.contributions.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
+          </ul>
+        </section>
 
-      <section>
-        <h2>What I contributed</h2>
-        <ul>
-          {slide.contributions.map((item) => (
-            <li key={item}>{item}</li>
+        <section>
+          <h2>The takeaway</h2>
+          <p>{slide.takeaway}</p>
+        </section>
+
+        <section>
+          <h2>Built with</h2>
+          <ul className="tool-list">
+            {slide.tools.map((tool) => (
+              <li key={tool}>{tool}</li>
+            ))}
+          </ul>
+        </section>
+
+        <p>{slide.credit}</p>
+
+        <div className="project-links">
+          {slide.links.map((link) => (
+            <a
+              key={link.href}
+              href={link.href}
+              target="_blank"
+              rel="noreferrer"
+            >
+              {link.label}
+            </a>
           ))}
-        </ul>
-      </section>
-
-      <section>
-        <h2>The takeaway</h2>
-        <p>{slide.takeaway}</p>
-      </section>
-
-      <section>
-        <h2>Built with</h2>
-        <ul className="tool-list">
-          {slide.tools.map((tool) => (
-            <li key={tool}>{tool}</li>
-          ))}
-        </ul>
-      </section>
-
-      <p>{slide.credit}</p>
-
-      <div className="project-links">
-        {slide.links.map((link) => (
-          <a
-            key={link.href}
-            href={link.href}
-            target="_blank"
-            rel="noreferrer"
-          >
-            {link.label}
-          </a>
-        ))}
+        </div>
       </div>
-    </>
+
+      <div className="project-side">
+        <ProjectPreview slide={slide} />
+      </div>
+    </div>
   );
 }
 
@@ -141,7 +145,12 @@ function App() {
           <article className="project-frame" aria-labelledby="slide-title">
             <h1 id="slide-title">{slide.title}</h1>
 
-            <div className="project-card">
+            <div
+              className="project-card"
+              role="region"
+              aria-label={`${slide.title} details`}
+              tabIndex={0}
+            >
               {slide.id === "welcome" && <p>{slide.introduction}</p>}
               {slide.id === "about" && <AboutDetails slide={slide} />}
               {slide.id !== "welcome" && slide.id !== "about" && (
