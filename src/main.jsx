@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { createRoot } from "react-dom/client";
 import { slides } from "./portfolioData.js";
 import { aboutImages, projectImages } from "./imageData.js";
@@ -6,6 +6,7 @@ import PortfolioHeader from "./PortfolioHeader.jsx";
 import DesktopSidebar from "./DesktopSidebar.jsx";
 import WelcomeContent from "./WelcomeContent.jsx";
 import GreetingTitle from "./GreetingTitle.jsx";
+import ThemeToggle from "./ThemeToggle.jsx";
 import "./styles.scss";
 
 function ProjectPreview({ slide }) {
@@ -129,22 +130,42 @@ function AboutDetails({ slide }) {
 
 function App() {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [theme, setTheme] = useState(() => {
+  const saved = window.localStorage.getItem("portfolio-theme");
+  if (saved === "light" || saved === "dark") return saved;
+  return window.matchMedia("(prefers-color-scheme: dark)").matches
+    ? "dark"
+    : "light";
+});
+
+useEffect(() => {
+  document.documentElement.dataset.theme = theme;
+  window.localStorage.setItem("portfolio-theme", theme);
+}, [theme]);
+
+function toggleTheme() {
+  setTheme((current) => (current === "dark" ? "light" : "dark"));
+}
   const slide = slides[activeIndex];
 
   return (
     <div className="site-shell">
-      <DesktopSidebar
-        slides={slides}
-        activeIndex={activeIndex}
-        onSelect={setActiveIndex}
-      />
-      <PortfolioHeader
-        slides={slides}
-        activeIndex={activeIndex}
-        onSelect={setActiveIndex}
-      />
+    <DesktopSidebar
+      slides={slides}
+      activeIndex={activeIndex}
+      onSelect={setActiveIndex}
+      theme={theme}
+    />
+    <PortfolioHeader
+      slides={slides}
+      activeIndex={activeIndex}
+      onSelect={setActiveIndex}
+      theme={theme}
+      onThemeToggle={toggleTheme}
+    />
 
       <main className="page">
+        <ThemeToggle theme={theme} onToggle={toggleTheme} />
         <div className="frame-stack">
           <article className="project-frame" aria-labelledby="slide-title">
             {slide.id === "welcome" ? (

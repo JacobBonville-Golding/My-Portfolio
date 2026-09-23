@@ -1,4 +1,5 @@
 import catLogo from "./media/cats/cat-white.png";
+import blackCatLogo from "./media/cats/cat-black.png";
 
 function PawStamp({ x, y, angle }) {
   return (
@@ -12,7 +13,7 @@ function PawStamp({ x, y, angle }) {
   );
 }
 
-function DesktopSidebar({ slides, activeIndex, onSelect }) {
+function DesktopSidebar({ slides, activeIndex, onSelect, theme }) {
     return (
         <aside className="desktop-sidebar" aria-label="Portfolio sidebar">
             <button
@@ -21,7 +22,7 @@ function DesktopSidebar({ slides, activeIndex, onSelect }) {
                 aria-label="Go to welcome slide"
                 onClick={() => onSelect(0)}
             >
-                <img src={catLogo} alt="" />
+                <img src={theme === "dark" ? catLogo : blackCatLogo} alt="" />
             </button>
 
             <div className="sidebar-name" aria-hidden="true">JAKE</div>

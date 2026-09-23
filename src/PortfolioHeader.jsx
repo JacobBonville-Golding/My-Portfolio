@@ -1,7 +1,9 @@
 import { useState } from "react";
 import catLogo from "./media/cats/cat-white.png";
+import blackCatLogo from "./media/cats/cat-black.png";
+import ThemeToggle from "./ThemeToggle.jsx";
 
-function PortfolioHeader({ slides, activeIndex, onSelect }) {
+function PortfolioHeader({ slides, activeIndex, onSelect, theme, onThemeToggle }) {
     const [menuOpen, setMenuOpen] = useState(false);
 
     function selectSlide(index) {
@@ -23,7 +25,7 @@ function PortfolioHeader({ slides, activeIndex, onSelect }) {
                 aria-label="Go to welcome slide"
                 onClick={() => selectSlide(0)}
             >
-                <img src={catLogo} alt="" />
+                <img src={theme === "dark" ? catLogo : blackCatLogo} alt="" />
             </button>
 
             <span className="header-name">JAKE</span>
@@ -59,6 +61,14 @@ function PortfolioHeader({ slides, activeIndex, onSelect }) {
                         {index === activeIndex && <span aria-hidden="true">✓</span>}
                     </button>
                 ))}
+                <ThemeToggle
+                    variant="menu"
+                    theme={theme}
+                    onToggle={() => {
+                        onThemeToggle();
+                        setMenuOpen(false);
+                    }}
+                />
             </nav>
         </header>
     );
