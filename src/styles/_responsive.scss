@@ -34,7 +34,7 @@
 }
 
 
-@media (min-width: 1600px) {
+@media (min-width: 1600px) and (min-height: 501px) {
   .site-shell {
     padding: 0;
   }
@@ -80,6 +80,7 @@
     display: flex;
     flex: 1;
     flex-direction: column-reverse;
+    justify-content: center;
     width: 100%;
     min-height: 0;
     margin: 1rem 0;
@@ -87,7 +88,7 @@
 
   .paw-button {
     position: relative;
-    flex: 1 1 0;
+    flex: 0 1 100px;
     width: 100%;
     min-height: 0;
     padding: 0;
@@ -159,7 +160,7 @@
     display: none;
   }
 }
-@media (max-width: 1599px) {
+@media (max-width: 1599px), (max-height: 500px) {
   .site-shell {
     display: grid;
     grid-template-rows: auto minmax(0, 1fr) auto;
@@ -185,6 +186,38 @@
 
   .project-card {
     min-height: 0;
+    overflow-y: auto;
+  }
+}
+
+@media (min-width: 1600px) and (max-height: 500px) {
+  .site-shell {
+    padding: 0.5rem;
+  }
+
+  .page {
+    padding: 0.5rem 0;
+  }
+
+  .project-frame {
+    padding: 0.5rem 1rem;
+  }
+
+  .project-frame > h1 {
+    margin-bottom: 0.25rem;
+    font-size: 1.3rem;
+  }
+
+  .project-card {
+    padding: 0.75rem;
+  }
+
+  .step-nav {
+    margin-top: 0.25rem;
+  }
+
+  .menu-panel {
+    max-height: calc(100svh - 72px);
     overflow-y: auto;
   }
 }
