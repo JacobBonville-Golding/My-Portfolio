@@ -3,7 +3,6 @@ import blackCat from "./media/cats/sitting-cat-black.png";
 import whiteCat from "./media/cats/sitting-cat-white-clean.png";
 import stebanPhoto from "./media/cats/steban-480.webp";
 import stebanPhotoLarge from "./media/cats/steban-960.webp";
-import "./styles/welcome.css";
 
 function SittingCat({ color, src }) {
   const eyesRef = useRef([]);

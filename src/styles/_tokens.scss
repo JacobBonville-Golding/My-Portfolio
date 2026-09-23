@@ -1,0 +1,31 @@
+:root {
+  color-scheme: dark;
+
+  --canvas: #191c1f;
+  --text: #f4f7fb;
+  --content: #252a30;
+  --frame: #0c0e10;
+  --frame-text: #fff;
+  --accent: #94bfff;
+  --layer: #244972;
+  --line: #667a91;
+  --muted: #d3deed;
+  --button-text: #fff;
+  --shadow: #0008;
+}
+
+:root[data-theme="light"] {
+  color-scheme: light;
+
+  --canvas: #fffcf7;
+  --text: #1f2328;
+  --content: #fff;
+  --frame: #4a4741;
+  --frame-text: #fff;
+  --accent: #9f631f;
+  --layer: #e8d8c3;
+  --line: rgb(74 71 65 / 25%);
+  --muted: #665f56;
+  --button-text: #1f2328;
+  --shadow: rgb(7 9 12 / 24%);
+}

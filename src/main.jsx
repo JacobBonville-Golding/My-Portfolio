@@ -6,7 +6,7 @@ import PortfolioHeader from "./PortfolioHeader.jsx";
 import DesktopSidebar from "./DesktopSidebar.jsx";
 import WelcomeContent from "./WelcomeContent.jsx";
 import GreetingTitle from "./GreetingTitle.jsx";
-import "./styles.css";
+import "./styles.scss";
 
 function ProjectPreview({ slide }) {
   const image = projectImages[slide.id];
