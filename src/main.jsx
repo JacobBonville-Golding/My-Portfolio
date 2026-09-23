@@ -100,26 +100,28 @@ function AboutPhotos() {
 
 function AboutDetails({ slide }) {
   return (
-    <>
-      <p className="tagline">{slide.tagline}</p>
-      <p>{slide.summary}</p>
+    <div className="project-layout">
+      <div className="project-copy">
+        <p className="tagline">{slide.tagline}</p>
+        <p>{slide.summary}</p>
 
-      <section>
-        <h2>Meet the creative directors</h2>
-        <p>{slide.directors}</p>
-      </section>
+        <section>
+          <h2>Meet the creative directors</h2>
+          <p>{slide.directors}</p>
+        </section>
 
-      <section>
-        <h2>Quick facts</h2>
-        <ul>
-          {slide.facts.map((fact) => (
-            <li key={fact}>{fact}</li>
-          ))}
-        </ul>
-      </section>
+        <section>
+          <h2>Quick facts</h2>
+          <ul>
+            {slide.facts.map((fact) => (
+              <li key={fact}>{fact}</li>
+            ))}
+          </ul>
+        </section>
+      </div>
 
       <AboutPhotos />
-    </>
+    </div>
   );
 }
 
