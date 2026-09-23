@@ -3,6 +3,7 @@ import { createRoot } from "react-dom/client";
 import { slides } from "./portfolioData.js";
 import { aboutImages, projectImages } from "./imageData.js";
 import PortfolioHeader from "./PortfolioHeader.jsx";
+import DesktopSidebar from "./DesktopSidebar.jsx";
 import "./styles.css";
 
 function ProjectPreview({ slide }) {
@@ -124,6 +125,11 @@ function App() {
 
   return (
     <div className="site-shell">
+      <DesktopSidebar
+        slides={slides}
+        activeIndex={activeIndex}
+        onSelect={setActiveIndex}
+      />
       <PortfolioHeader
         slides={slides}
         activeIndex={activeIndex}

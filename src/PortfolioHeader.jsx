@@ -32,7 +32,8 @@ function PortfolioHeader({ slides, activeIndex, onSelect }) {
             className="menu-toggle"
             type="button"
             aria-label={menuOpen ? "Close slide menu" : "Open slide menu"}
-            aria-expanded="slide-menu"
+            aria-expanded={menuOpen}
+            aria-controls="slide-menu"
             onClick={() => setMenuOpen((open) => !open)}
             >
                 <span />
