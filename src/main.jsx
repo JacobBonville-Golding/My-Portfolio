@@ -1,19 +1,132 @@
-import React from "react";
+import React, { useState } from "react";
 import { createRoot } from "react-dom/client";
+import { slides } from "./portfolioData.js";
 import "./styles.css";
 
-function App() {
+function ProjectDetails({ slide }) {
   return (
-    <main className="page">
-      <div className="intro">
-        <p className="eyebrow">Jake Bonville-Golding</p>
-        <h1>Web developer</h1>
-        <p>
-          A portfolio of thoughtful websites and interactive projects. More to
-          come as this site takes shape.
-        </p>
+    <>
+      <p className="tagline">{slide.tagline}</p>
+      <p>{slide.summary}</p>
+
+      <section>
+        <h2>What I contributed</h2>
+        <ul>
+          {slide.contributions.map((item) => (
+            <li key={item}>{item}</li>
+          ))}
+        </ul>
+      </section>
+
+      <section>
+        <h2>The takeaway</h2>
+        <p>{slide.takeaway}</p>
+      </section>
+
+      <section>
+        <h2>Built with</h2>
+        <ul className="tool-list">
+          {slide.tools.map((tool) => (
+            <li key={tool}>{tool}</li>
+          ))}
+        </ul>
+      </section>
+
+      <p>{slide.credit}</p>
+
+      <div className="project-links">
+        {slide.links.map((link) => (
+          <a
+            key={link.href}
+            href={link.href}
+            target="_blank"
+            rel="noreferrer"
+          >
+            {link.label}
+          </a>
+        ))}
       </div>
-    </main>
+    </>
+  );
+}
+
+function AboutDetails({ slide }) {
+  return (
+    <>
+      <p className="tagline">{slide.tagline}</p>
+      <p>{slide.summary}</p>
+
+      <section>
+        <h2>Meet the creative directors</h2>
+        <p>{slide.directors}</p>
+      </section>
+
+      <section>
+        <h2>Quick facts</h2>
+        <ul>
+          {slide.facts.map((fact) => (
+            <li key={fact}>{fact}</li>
+          ))}
+        </ul>
+      </section>
+    </>
+  );
+}
+
+function App() {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const slide = slides[activeIndex];
+
+  return (
+    <div className="site-shell">
+      <nav className="slide-nav" aria-label="Portfolio slides">
+        {slides.map((item, index) => (
+          <button
+            key={item.id}
+            type="button"
+            aria-current={index === activeIndex ? "page" : undefined}
+            onClick={() => setActiveIndex(index)}
+          >
+            {String(index).padStart(2, "0")} {item.navLabel}
+          </button>
+        ))}
+      </nav>
+
+      <main className="page">
+        <article className="intro" aria-labelledby="slide-title">
+          <h1 id="slide-title">{slide.title}</h1>
+
+          {slide.id === "welcome" && <p>{slide.introduction}</p>}
+          {slide.id === "about" && <AboutDetails slide={slide} />}
+          {slide.id !== "welcome" && slide.id !== "about" && (
+            <ProjectDetails slide={slide} />
+          )}
+        </article>
+      </main>
+
+      <nav className="step-nav" aria-label="Previous and next slide">
+        <button
+          type="button"
+          disabled={activeIndex === 0}
+          onClick={() => setActiveIndex(activeIndex - 1)}
+        >
+          Previous
+        </button>
+
+        <span aria-live="polite">
+          {String(activeIndex).padStart(2, "0")} /{" "}
+          {String(slides.length - 1).padStart(2, "0")}
+        </span>
+
+        <button
+          type="button"
+          disabled={activeIndex === slides.length - 1}
+          onClick={() => setActiveIndex(activeIndex + 1)}
+        >
+          Next
+        </button>
+      </nav>
+    </div>
   );
 }
 
