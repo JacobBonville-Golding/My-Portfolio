@@ -52,6 +52,7 @@ export const slides = [
     ],
   },
   {
+    id: "pong",
     navLabel: "Pong",
     title: "JavaScript Pong",
     tagline: "A small game with a surprising number of moving parts.",
