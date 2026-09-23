@@ -4,6 +4,7 @@ import { slides } from "./portfolioData.js";
 import { aboutImages, projectImages } from "./imageData.js";
 import PortfolioHeader from "./PortfolioHeader.jsx";
 import DesktopSidebar from "./DesktopSidebar.jsx";
+import WelcomeContent from "./WelcomeContent.jsx";
 import "./styles.css";
 
 function ProjectPreview({ slide }) {
@@ -148,12 +149,14 @@ function App() {
             <h1 id="slide-title">{slide.title}</h1>
 
             <div
-              className="project-card"
+              className={slide.id === "welcome" ? "project-card welcome-card" : "project-card"}
               role="region"
               aria-label={`${slide.title} details`}
               tabIndex={0}
             >
-              {slide.id === "welcome" && <p>{slide.introduction}</p>}
+              {slide.id === "welcome" && (
+                <WelcomeContent introduction={slide.introduction} />
+              )}
               {slide.id === "about" && <AboutDetails slide={slide} />}
               {slide.id !== "welcome" && slide.id !== "about" && (
                 <ProjectDetails slide={slide} />
