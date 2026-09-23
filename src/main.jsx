@@ -8,6 +8,7 @@ import WelcomeContent from "./WelcomeContent.jsx";
 import GreetingTitle from "./GreetingTitle.jsx";
 import ThemeToggle from "./ThemeToggle.jsx";
 import PawCursor from "./PawCursor.jsx";
+import PortfolioImage from "./PortfolioImage.jsx";
 import "./styles.scss";
 
 function ProjectPreview({ slide }) {
@@ -17,13 +18,11 @@ function ProjectPreview({ slide }) {
 
   return (
     <figure className="project-preview">
-      <img
+      <PortfolioImage
         src={image.small}
         srcSet={`${image.small} 480w, ${image.large} 960w`}
         sizes="(max-width: 600px) 90vw, 480px"
         alt={`${slide.title} homepage presented in a device mockup`}
-        loading="lazy"
-        decoding="async"
       />
     </figure>
   );
@@ -87,13 +86,11 @@ function AboutPhotos() {
     <div className="about-photos" aria-label="Jake and his cats">
       {aboutImages.map((image) => (
         <figure key={image.caption}>
-          <img
+          <PortfolioImage
             src={image.small}
             srcSet={`${image.small} 480w, ${image.large} 960w`}
             sizes="(max-width: 600px) 90vw, 400px"
             alt={image.alt}
-            loading="lazy"
-            decoding="async"
           />
           <figcaption>{image.caption}</figcaption>
         </figure>
