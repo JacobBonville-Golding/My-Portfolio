@@ -41,14 +41,95 @@ a {
   padding: clamp(1rem, 3vw, 2rem);
 }
 
-.slide-nav {
-  display: flex;
-  flex-wrap: wrap;
+.portfolio-header {
+  position: relative;
+  display: grid;
+  grid-template-columns: 44px minmax(0, 1fr) 44px;
+  align-items: center;
   gap: 0.5rem;
-  justify-content: center;
+  min-height: 64px;
+  padding: 0.5rem;
+  border-bottom: 1px solid #667a91;
 }
 
-.slide-nav button,
+.header-home,
+.menu-toggle {
+  display: grid;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  place-items: center;
+  border: 1px solid #667a91;
+  border-radius: 0.75rem;
+  color: #94bfff;
+  background: #252a30;
+}
+
+.header-home img {
+  display: block;
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
+}
+
+.header-name {
+  color: #94bfff;
+  font-size: clamp(1.8rem, 5vw, 3rem);
+  text-align: center;
+}
+
+.menu-toggle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  justify-self: end;
+}
+
+.menu-toggle span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: currentColor;
+}
+.menu-panel {
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  right: 0;
+  z-index: 10;
+  display: grid;
+  gap: 0.25rem;
+  width: min(250px, 100%);
+  padding: 0.5rem;
+  border: 1px solid #667a91;
+  border-radius: 1rem;
+  background: #252a30;
+  box-shadow: 0 12px 30px #0008;
+}
+
+.menu-panel[hidden] {
+  display: none;
+}
+
+.menu-panel button {
+  display: grid;
+  grid-template-columns: 2.5rem minmax(0, 1fr) 1rem;
+  align-items: center;
+  min-height: 44px;
+  padding: 0.5rem;
+  border: 0;
+  border-radius: 0.5rem;
+  color: inherit;
+  background: transparent;
+  text-align: left;
+}
+
+.menu-panel button:hover,
+.menu-panel button[aria-current="page"] {
+  background: #244972;
+}
+
 .step-nav button {
   min-height: 44px;
   padding: 0.65rem 1rem;
@@ -56,11 +137,6 @@ a {
   border-radius: 0.75rem;
   color: inherit;
   background: #252a30;
-}
-
-.slide-nav button[aria-current="page"] {
-  border-color: #94bfff;
-  background: #244972;
 }
 
 .page {
@@ -131,14 +207,6 @@ li + li {
 }
 
 @media (max-width: 600px) {
-  .slide-nav {
-    justify-content: flex-start;
-  }
-
-  .slide-nav button {
-    flex: 1 1 auto;
-  }
-
   .page {
     min-height: 0;
     margin-top: 1rem;

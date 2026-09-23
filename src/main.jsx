@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { createRoot } from "react-dom/client";
 import { slides } from "./portfolioData.js";
 import { aboutImages, projectImages } from "./imageData.js";
+import PortfolioHeader from "./PortfolioHeader.jsx";
 import "./styles.css";
 
 function ProjectPreview({ slide }) {
@@ -123,18 +124,11 @@ function App() {
 
   return (
     <div className="site-shell">
-      <nav className="slide-nav" aria-label="Portfolio slides">
-        {slides.map((item, index) => (
-          <button
-            key={item.id}
-            type="button"
-            aria-current={index === activeIndex ? "page" : undefined}
-            onClick={() => setActiveIndex(index)}
-          >
-            {String(index).padStart(2, "0")} {item.navLabel}
-          </button>
-        ))}
-      </nav>
+      <PortfolioHeader
+        slides={slides}
+        activeIndex={activeIndex}
+        onSelect={setActiveIndex}
+      />
 
       <main className="page">
         <article className="intro" aria-labelledby="slide-title">
