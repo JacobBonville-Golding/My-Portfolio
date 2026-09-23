@@ -129,14 +129,14 @@
   right: 1.5rem;
   z-index: 3;
   padding: 0.35rem 0.65rem;
-  border: 1px solid #667a91;
+  border: 1px solid var(--line);
   border-radius: 999px;
-  color: #f4f7fb;
-  background: #252a30;
+  color: var(--text);
+  background: var(--content);
 }
 
 .skip-greeting:focus-visible {
-  outline: 3px solid #94bfff;
+  outline: 3px solid var(--accent);
   outline-offset: 3px;
 }
 

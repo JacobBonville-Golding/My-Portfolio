@@ -3,8 +3,8 @@
 
 :root {
   font-family: Arial, Helvetica, sans-serif;
-  color: #f4f7fb;
-  background: #191c1f;
+  color: var(--text);
+  background: var(--canvas);
 }
 
 * {
@@ -31,12 +31,12 @@ button:disabled {
 
 button:focus-visible,
 a:focus-visible {
-  outline: 3px solid #94bfff;
+  outline: 3px solid var(--accent);
   outline-offset: 3px;
 }
 
 a {
-  color: #94bfff;
+  color: var(--accent);
 }
 
 .site-shell {
@@ -52,7 +52,7 @@ a {
   gap: 0.5rem;
   min-height: 64px;
   padding: 0.5rem;
-  border-bottom: 1px solid #667a91;
+  border-bottom: 1px solid var(--line);
 }
 
 .header-home,
@@ -62,10 +62,10 @@ a {
   height: 44px;
   padding: 0;
   place-items: center;
-  border: 1px solid #667a91;
+  border: 1px solid var(--line);
   border-radius: 0.75rem;
-  color: #94bfff;
-  background: #252a30;
+  color: var(--accent);
+  background: var(--content);
 }
 
 .header-home img {
@@ -76,7 +76,7 @@ a {
 }
 
 .header-name {
-  color: #94bfff;
+  color: var(--accent);
   font-size: clamp(1.8rem, 5vw, 3rem);
   text-align: center;
 }
@@ -106,10 +106,10 @@ a {
   gap: 0.25rem;
   width: min(250px, 100%);
   padding: 0.5rem;
-  border: 1px solid #667a91;
+  border: 1px solid var(--line);
   border-radius: 1rem;
-  background: #252a30;
-  box-shadow: 0 12px 30px #0008;
+  background: var(--content);
+  box-shadow: 0 12px 30px var(--shadow);
 }
 
 .menu-panel[hidden] {
@@ -131,16 +131,16 @@ a {
 
 .menu-panel button:hover,
 .menu-panel button[aria-current="page"] {
-  background: #244972;
+  background: var(--layer);
 }
 
 .step-nav button {
   min-height: 44px;
   padding: 0.65rem 1rem;
-  border: 1px solid #667a91;
+  border: 1px solid var(--line);
   border-radius: 0.75rem;
   color: inherit;
-  background: #252a30;
+  background: var(--content);
 }
 
 .page {
@@ -168,13 +168,13 @@ a {
 
 .frame-stack::before {
   z-index: 1;
-  background: #94bfff;
+  background: var(--accent);
   transform: translate(10px, 9px);
 }
 
 .frame-stack::after {
   z-index: 0;
-  background: #244972;
+  background: var(--layer);
   transform: translate(20px, 18px);
 }
 
@@ -187,12 +187,12 @@ a {
   min-height: min(75svh, 760px);
   padding: clamp(1.25rem, 3vw, 3rem);
   border-radius: inherit;
-  background: #0c0e10;
+  background: var(--frame);
 }
 
 .project-frame > h1 {
   margin: 0 0 1rem;
-  color: #fff;
+  color: var(--frame-text);
   font-size: clamp(1.8rem, 3vw, 2.6rem);
   font-weight: 400;
   text-align: center;
@@ -203,7 +203,7 @@ a {
   min-width: 0;
   padding: clamp(1.25rem, 3vw, 3rem);
   border-radius: 2rem;
-  background: #252a30;
+  background: var(--content);
 }
 
 h1 {
@@ -213,7 +213,7 @@ h1 {
 
 h2 {
   margin-bottom: 0.4rem;
-  color: #94bfff;
+  color: var(--accent);
   font-size: 1.15rem;
   font-weight: 400;
   text-transform: uppercase;
@@ -248,7 +248,7 @@ li + li {
 .tool-list li {
   margin: 0;
   padding: 0.25rem 0.6rem;
-  border: 1px solid #667a91;
+  border: 1px solid var(--line);
   border-radius: 1rem;
 }
 
@@ -356,7 +356,7 @@ li + li {
 
 .about-photos figcaption {
   margin-top: 0.5rem;
-  color: #d3deed;
+  color: var(--muted);
   font-size: 0.875rem;
   text-align: center;
 }
@@ -382,8 +382,8 @@ li + li {
     align-items: center;
     width: 390px;
     padding: 2rem 1.5rem;
-    border-right: 1px solid #667a91;
-    background: #191c1f;
+    border-right: 1px solid var(--line);
+    background: var(--canvas);
   }
 
   .sidebar-home {
@@ -402,7 +402,7 @@ li + li {
   }
 
   .sidebar-name {
-    color: #94bfff;
+    color: var(--accent);
     font-size: 5rem;
     line-height: 1;
   }
@@ -422,7 +422,7 @@ li + li {
     min-height: 0;
     padding: 0;
     border: 0;
-    color: #f4f7fb;
+    color: var(--text);
     background: transparent;
   }
 
@@ -436,7 +436,7 @@ li + li {
   }
 
   .paw-button[aria-current="page"] {
-    color: #94bfff;
+    color: var(--accent);
   }
 
   .paw-label {
@@ -445,8 +445,8 @@ li + li {
     left: calc(50% + 65px);
     padding: 0.25rem 0.5rem;
     border-radius: 0.5rem;
-    color: #f4f7fb;
-    background: #244972;
+    color: var(--text);
+    background: var(--layer);
     opacity: 0;
     pointer-events: none;
     transform: translateY(-50%);
@@ -462,8 +462,8 @@ li + li {
     min-height: 44px;
     border: 0;
     border-radius: 999px;
-    color: #fff;
-    background: #244972;
+    color: var(--button-text);
+    background: var(--layer);
   }
 
   .sidebar-footer {
