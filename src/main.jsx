@@ -5,6 +5,7 @@ import { aboutImages, projectImages } from "./imageData.js";
 import PortfolioHeader from "./PortfolioHeader.jsx";
 import DesktopSidebar from "./DesktopSidebar.jsx";
 import WelcomeContent from "./WelcomeContent.jsx";
+import GreetingTitle from "./GreetingTitle.jsx";
 import "./styles.css";
 
 function ProjectPreview({ slide }) {
@@ -146,7 +147,11 @@ function App() {
       <main className="page">
         <div className="frame-stack">
           <article className="project-frame" aria-labelledby="slide-title">
-            <h1 id="slide-title">{slide.title}</h1>
+            {slide.id === "welcome" ? (
+              <GreetingTitle />
+            ) : (
+              <h1 id="slide-title">{slide.title}</h1>
+            )}
 
             <div
               className={slide.id === "welcome" ? "project-card welcome-card" : "project-card"}

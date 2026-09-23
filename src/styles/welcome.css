@@ -115,3 +115,20 @@
 .sitting-cat--white .tracking-eye i {
   background: #83b7ff;
 }
+
+.skip-greeting {
+  position: absolute;
+  top: 1.2rem;
+  right: 1.5rem;
+  z-index: 3;
+  padding: 0.35rem 0.65rem;
+  border: 1px solid #667a91;
+  border-radius: 999px;
+  color: #f4f7fb;
+  background: #252a30;
+}
+
+.skip-greeting:focus-visible {
+  outline: 3px solid #94bfff;
+  outline-offset: 3px;
+}
