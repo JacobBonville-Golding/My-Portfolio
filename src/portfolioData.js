@@ -32,7 +32,7 @@ export const slides = [
     id: "wordpress",
     navLabel: "WordPress",
     title: "WordPress School Site",
-    tagline: "Matching the Vision, Building the Experience",
+    tagline: "Matching the Vision, Building the Experience.",
     summary:
     "A from-scratch WordPress build that recreates a supplied school design, pixel by pixel, across responsive templates and interactions.",
     tools: ["WordPress", "PHP", "HTML", "CSS", "JavaScript", "Gravity Forms"],
@@ -52,10 +52,9 @@ export const slides = [
     ],
   },
   {
-    id: "pong",
-    navLabel: "WordPress",
-    title: "Pong",
-    tagline: "JavaScript Pong",
+    navLabel: "Pong",
+    title: "JavaScript Pong",
+    tagline: "A small game with a surprising number of moving parts.",
     summary:
       "A browser-based Pong game built from scratch to explore movement, collision detection and game state using JavaScript.",
     tools: ["HTML", "CSS", "JavaScript"],
@@ -69,7 +68,7 @@ export const slides = [
     credit: "Solo project",
     links: [
       {
-        label: "View Live Site",
+        label: "Play the Game",
         href: "https://thebonville.com/pong-game/Jake's%20Pong%20Game/index.html",
       },
     ],

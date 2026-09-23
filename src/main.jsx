@@ -1,13 +1,35 @@
 import React, { useState } from "react";
 import { createRoot } from "react-dom/client";
 import { slides } from "./portfolioData.js";
+import { aboutImages, projectImages } from "./imageData.js";
 import "./styles.css";
+
+function ProjectPreview({ slide }) {
+  const image = projectImages[slide.id];
+
+  if (!image) return null;
+
+  return (
+    <figure className="project-preview">
+      <img
+        src={image.small}
+        srcSet={`${image.small} 480w, ${image.large} 960w`}
+        sizes="(max-width: 600px) 90vw, 480px"
+        alt={`${slide.title} homepage presented in a device mockup`}
+        loading="lazy"
+        decoding="async"
+      />
+    </figure>
+  );
+}
 
 function ProjectDetails({ slide }) {
   return (
     <>
       <p className="tagline">{slide.tagline}</p>
       <p>{slide.summary}</p>
+
+      <ProjectPreview slide={slide} />
 
       <section>
         <h2>What I contributed</h2>
@@ -50,6 +72,26 @@ function ProjectDetails({ slide }) {
   );
 }
 
+function AboutPhotos() {
+  return (
+    <div className="about-photos" aria-label="Jake and his cats">
+      {aboutImages.map((image) => (
+        <figure key={image.caption}>
+          <img
+            src={image.small}
+            srcSet={`${image.small} 480w, ${image.large} 960w`}
+            sizes="(max-width: 600px) 90vw, 400px"
+            alt={image.alt}
+            loading="lazy"
+            decoding="async"
+          />
+          <figcaption>{image.caption}</figcaption>
+        </figure>
+      ))}
+    </div>
+  );
+}
+
 function AboutDetails({ slide }) {
   return (
     <>
@@ -69,6 +111,8 @@ function AboutDetails({ slide }) {
           ))}
         </ul>
       </section>
+
+      <AboutPhotos />
     </>
   );
 }
