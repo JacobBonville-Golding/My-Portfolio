@@ -27,6 +27,10 @@ The production files are generated in `dist/`.
 - Responsive images in WebP format
 - Zdog for the optional paw cursor
 
+## AI assistance
+
+This portfolio was developed by Jacob Bonville-Golding with assistance from OpenAI Codex for planning, code suggestions, debugging, and review. I made the final design decisions and tested the finished site.
+
 ## Accessibility features
 
 The portfolio supports keyboard navigation, visible focus indicators, descriptive image text, light and dark themes, and reduced-motion preferences. The animated greeting can be skipped. Project content remains available when decorative effects are disabled.
