@@ -1,0 +1,62 @@
+.page {
+  display: grid;
+  min-height: calc(100svh - 140px);
+  padding: 1.5rem;
+  place-items: center;
+}
+
+.frame-stack {
+  position: relative;
+  isolation: isolate;
+  width: min(calc(100% - 28px), 1320px);
+  border-radius: 2.5rem;
+}
+
+.frame-stack::before,
+.frame-stack::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+.frame-stack::before {
+  z-index: 1;
+  background: var(--accent);
+  transform: translate(10px, 9px);
+}
+
+.frame-stack::after {
+  z-index: 0;
+  background: var(--layer);
+  transform: translate(20px, 18px);
+}
+
+.project-frame {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: min(75svh, 760px);
+  padding: clamp(1.25rem, 3vw, 3rem);
+  border-radius: inherit;
+  background: var(--frame);
+}
+
+.project-frame > h1 {
+  margin: 0 0 1rem;
+  color: var(--frame-text);
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
+  font-weight: 400;
+  text-align: center;
+}
+
+.project-card {
+  flex: 1;
+  min-width: 0;
+  padding: clamp(1.25rem, 3vw, 3rem);
+  border-radius: 2rem;
+  background: var(--content);
+}

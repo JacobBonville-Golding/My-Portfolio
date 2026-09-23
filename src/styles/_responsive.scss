@@ -1,0 +1,190 @@
+@media (max-width: 600px) {
+  .site-shell {
+    padding: 0.5rem;
+  }
+
+  .page {
+    min-height: calc(100svh - 140px);
+    margin-top: 0;
+    padding: 0.75rem 0.5rem 1.75rem;
+  }
+
+  .frame-stack {
+    width: calc(100% - 20px);
+    border-radius: 1.75rem;
+  }
+
+  .frame-stack::before {
+    transform: translate(6px, 6px);
+  }
+
+  .frame-stack::after {
+    transform: translate(12px, 12px);
+  }
+
+  .project-frame {
+    min-height: calc(100svh - 160px);
+    padding: 0.75rem;
+  }
+
+  .project-card {
+    padding: 1rem;
+    border-radius: 1.25rem;
+  }
+}
+
+
+@media (min-width: 1600px) {
+  .site-shell {
+    padding: 0;
+  }
+
+  .portfolio-header {
+    display: none;
+  }
+
+  .desktop-sidebar {
+    position: fixed;
+    inset: 0 auto 0 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 390px;
+    padding: 2rem 1.5rem;
+    border-right: 1px solid var(--line);
+    background: var(--canvas);
+  }
+
+  .sidebar-home {
+    width: min(100%, 250px);
+    padding: 0;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+  }
+
+  .sidebar-home img {
+    display: block;
+    width: 100%;
+    height: 130px;
+    object-fit: contain;
+  }
+
+  .sidebar-name {
+    color: var(--accent);
+    font-size: 5rem;
+    line-height: 1;
+  }
+
+  .paw-navigation {
+    display: flex;
+    flex: 1;
+    flex-direction: column-reverse;
+    width: 100%;
+    min-height: 0;
+    margin: 1rem 0;
+  }
+
+  .paw-button {
+    position: relative;
+    flex: 1 1 0;
+    width: 100%;
+    min-height: 0;
+    padding: 0;
+    border: 0;
+    color: var(--text);
+    background: transparent;
+  }
+
+  .paw-button svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+    max-height: 100px;
+    margin: auto;
+  }
+
+  .paw-button svg.is-complete {
+    fill: currentColor;
+  }
+
+  .paw-button svg.is-future {
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.7;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+  .paw-label {
+    position: absolute;
+    top: 50%;
+    left: calc(50% + 65px);
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.5rem;
+    color: var(--text);
+    background: var(--layer);
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-50%);
+  }
+
+  .paw-button:hover .paw-label,
+  .paw-button:focus-visible .paw-label {
+    opacity: 1;
+  }
+
+  .behind-button {
+    width: 180px;
+    min-height: 44px;
+    border: 0;
+    border-radius: 999px;
+    color: var(--button-text);
+    background: var(--layer);
+  }
+
+  .sidebar-footer {
+    display: grid;
+    gap: 0.25rem;
+    margin-top: 1.5rem;
+    text-align: center;
+  }
+
+  .page {
+    min-height: 100vh;
+    margin-left: 390px;
+    padding: 2rem;
+  }
+
+  .step-nav {
+    display: none;
+  }
+}
+@media (max-width: 1599px) {
+  .site-shell {
+    display: grid;
+    grid-template-rows: auto minmax(0, 1fr) auto;
+    height: 100svh;
+  }
+
+  .page {
+    grid-template-rows: minmax(0, 1fr);
+    min-height: 0;
+    padding-block: 1rem 0;
+  }
+
+  .frame-stack {
+    height: 100%;
+    max-height: 760px;
+    min-height: 0;
+  }
+
+  .project-frame {
+    height: 100%;
+    min-height: 0;
+  }
+
+  .project-card {
+    min-height: 0;
+    overflow-y: auto;
+  }
+}

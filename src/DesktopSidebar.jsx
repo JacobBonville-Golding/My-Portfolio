@@ -37,21 +37,26 @@ function DesktopSidebar({ slides, activeIndex, onSelect, theme }) {
                         aria-current={index === activeIndex ? "page" : undefined}
                         onClick={() => onSelect(index)}
                     >
-                        <svg viewBox="0 0 160 180" aria-hidden="true" focusable="false">
-                        {index % 2 === 0 ? (
-                            <>
-                            <PawStamp x={120} y={34} angle={-9} />
-                            <PawStamp x={40} y={90} angle={8} />
-                            <PawStamp x={116} y={152} angle={-7} />
-                            </>
-                        ) : (
-                            <>
-                            <PawStamp x={40} y={34} angle={9} />
-                            <PawStamp x={120} y={90} angle={-8} />
-                            <PawStamp x={40} y={152} angle={7} />
-                            </>
-                        )}
-                        </svg>
+                    <svg
+                    className={index > activeIndex ? "is-future" : "is-complete"}
+                    viewBox="0 0 160 180"
+                    aria-hidden="true"
+                    focusable="false"
+                    >
+                    {index % 2 === 0 ? (
+                        <>
+                        <PawStamp x={120} y={34} angle={-9} />
+                        <PawStamp x={40} y={90} angle={8} />
+                        <PawStamp x={116} y={152} angle={-7} />
+                        </>
+                    ) : (
+                        <>
+                        <PawStamp x={40} y={34} angle={9} />
+                        <PawStamp x={120} y={90} angle={-8} />
+                        <PawStamp x={40} y={152} angle={7} />
+                        </>
+                    )}
+                    </svg>
                         <span className="paw-label" aria-hidden="true">
                         {slide.navLabel}
                         </span>
