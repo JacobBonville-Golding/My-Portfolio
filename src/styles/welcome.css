@@ -15,6 +15,11 @@
   overflow: hidden;
 }
 
+.greeting-title {
+  min-height: 1.2em;
+  line-height: 1.2;
+}
+
 .welcome-cats {
   position: absolute;
   right: 4%;
@@ -157,5 +162,11 @@
     height: 100%;
     object-fit: cover;
     object-position: center 38%;
+  }
+}
+
+@media (max-height: 500px) and (orientation: landscape) {
+  .sitting-cat {
+    width: min(42%, 16svh, 380px);
   }
 }

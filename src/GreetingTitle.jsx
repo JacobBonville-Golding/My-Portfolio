@@ -110,7 +110,7 @@ function GreetingTitle() {
 
   return (
     <>
-      <h1 id="slide-title">
+      <h1 id="slide-title" className="greeting-title">
         <span className="screen-reader-only">
           Hello and welcome to Jake&apos;s portfolio
         </span>
