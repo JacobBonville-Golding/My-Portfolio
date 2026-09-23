@@ -1,16 +1,45 @@
 # Jake Bonville-Golding — Portfolio
 
-This repository records the portfolio's construction in small, working milestones. The completed comparison copy is kept separately as a design and accessibility reference.
+A responsive portfolio featuring selected web projects, an About page, and a cat-inspired visual theme. This repository records its construction through small, working commits.
 
-## Build plan
+## Run locally
 
-1. Set up the project and a basic page.
-2. Add the portfolio content and slide navigation.
-3. Add imagery and responsive layouts.
-4. Add themes, motion preferences, and accessibility refinements.
+```powershell
+npm install
+npm run dev
+```
 
-Each milestone will be checked before it is committed.
+Open the local address shown by Vite.
 
-## Third-party credits
+## Production build
 
-The paw cursor adapts Codfish Lin's “Lend a Cat Paw cursor” and uses Zdog. See [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) for attribution and license notices.
+```powershell
+npm run build
+npm run preview
+```
+
+The production files are generated in `dist/`.
+
+## Built with
+
+- React and Vite
+- SCSS organized by site section
+- Responsive images in WebP format
+- Zdog for the optional paw cursor
+
+## Accessibility features
+
+The portfolio supports keyboard navigation, visible focus indicators, descriptive image text, light and dark themes, and reduced-motion preferences. The animated greeting can be skipped. Project content remains available when decorative effects are disabled.
+
+## Project structure
+
+- `src/main.jsx` — slide content and application layout
+- `src/portfolioData.js` — project text and links
+- `src/imageData.js` — project and About image references
+- `src/styles/` — section-specific SCSS
+- `src/media/` — portfolio imagery
+- `public/` — favicon and other public assets
+
+## Credits
+
+Portfolio photos and project presentation images are used with permission. See [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) for third-party attribution and license notices.
