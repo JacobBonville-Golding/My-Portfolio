@@ -20,7 +20,7 @@ export const slides = [
     ],
     takeaway:
       "I learned to break API data into manageable pieces, test as I built and plan for mobile from the start.",
-    credit: "Created with Craig",
+    credit: "Co-developed with Craig Foulds",
     links: [
       {
         label: "View Live Site",
@@ -43,7 +43,7 @@ export const slides = [
     ],
     takeaway:
       "I learned how WordPress templates, custom content and plugins work together—and when the editor or custom code is the better tool.",
-    credit: "Created with Craig",
+    credit: "Co-developed with Craig Foulds",
     links: [
       {
         label: "View Live Site",
