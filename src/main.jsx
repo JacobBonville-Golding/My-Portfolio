@@ -137,15 +137,19 @@ function App() {
       />
 
       <main className="page">
-        <article className="intro" aria-labelledby="slide-title">
-          <h1 id="slide-title">{slide.title}</h1>
+        <div className="frame-stack">
+          <article className="project-frame" aria-labelledby="slide-title">
+            <h1 id="slide-title">{slide.title}</h1>
 
-          {slide.id === "welcome" && <p>{slide.introduction}</p>}
-          {slide.id === "about" && <AboutDetails slide={slide} />}
-          {slide.id !== "welcome" && slide.id !== "about" && (
-            <ProjectDetails slide={slide} />
-          )}
-        </article>
+            <div className="project-card">
+              {slide.id === "welcome" && <p>{slide.introduction}</p>}
+              {slide.id === "about" && <AboutDetails slide={slide} />}
+              {slide.id !== "welcome" && slide.id !== "about" && (
+                <ProjectDetails slide={slide} />
+              )}
+            </div>
+          </article>
+        </div>
       </main>
 
       <nav className="step-nav" aria-label="Previous and next slide">
