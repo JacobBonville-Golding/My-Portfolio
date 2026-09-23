@@ -1,0 +1,98 @@
+.paw-follower,
+.paw-laser,
+.paw-print {
+  position: fixed;
+  z-index: 2147483647;
+  pointer-events: none;
+}
+
+.paw-follower {
+  inset: 0 auto auto 0;
+  will-change: transform;
+}
+
+.paw-laser {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #e53636;
+  box-shadow: 0 0 13px 3px #e53636;
+  opacity: 0.9;
+  transform: translate(-50%, -50%);
+}
+
+.paw-laser--pointer {
+  background: white;
+  box-shadow: 0 0 7px 4px white;
+}
+
+.paw-print {
+  width: 38px;
+  height: 34px;
+  color: #d54863;
+  opacity: 0;
+  transform: translate(-50%, -50%) rotate(-10deg) scale(0.7);
+  animation: print-fade 3.6s ease-out forwards;
+}
+
+.paw-print i {
+  position: absolute;
+  display: block;
+  background: currentColor;
+}
+
+.main-pad {
+  left: 10px;
+  top: 15px;
+  width: 20px;
+  height: 16px;
+  border-radius: 55% 55% 45% 45%;
+}
+
+.toe {
+  width: 8px;
+  height: 11px;
+  border-radius: 50%;
+}
+
+.toe-1 {
+  left: 2px;
+  top: 9px;
+  transform: rotate(-25deg);
+}
+
+.toe-2 {
+  left: 10px;
+  top: 1px;
+  transform: rotate(-8deg);
+}
+
+.toe-3 {
+  left: 21px;
+  top: 1px;
+  transform: rotate(8deg);
+}
+
+.toe-4 {
+  left: 30px;
+  top: 9px;
+  transform: rotate(25deg);
+}
+
+@keyframes print-fade {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) rotate(-10deg) scale(0.7);
+  }
+
+  12%,
+  70% {
+    opacity: 0.72;
+    transform: translate(-50%, -50%) rotate(-10deg) scale(1);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) rotate(-10deg) scale(1);
+  }
+}

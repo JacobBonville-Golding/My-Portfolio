@@ -10,3 +10,7 @@ This repository records the portfolio's construction in small, working milestone
 4. Add themes, motion preferences, and accessibility refinements.
 
 Each milestone will be checked before it is committed.
+
+## Third-party credits
+
+The paw cursor adapts Codfish Lin's “Lend a Cat Paw cursor” and uses Zdog. See [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) for attribution and license notices.

@@ -7,6 +7,7 @@ import DesktopSidebar from "./DesktopSidebar.jsx";
 import WelcomeContent from "./WelcomeContent.jsx";
 import GreetingTitle from "./GreetingTitle.jsx";
 import ThemeToggle from "./ThemeToggle.jsx";
+import PawCursor from "./PawCursor.jsx";
 import "./styles.scss";
 
 function ProjectPreview({ slide }) {
@@ -150,6 +151,7 @@ function toggleTheme() {
 
   return (
     <div className="site-shell">
+    <PawCursor theme={theme} />
     <DesktopSidebar
       slides={slides}
       activeIndex={activeIndex}

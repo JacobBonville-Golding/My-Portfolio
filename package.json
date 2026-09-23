@@ -11,7 +11,8 @@
   "dependencies": {
     "react": "^19.2.7",
     "react-dom": "^19.2.7",
-    "vite": "^8.1.5"
+    "vite": "^8.1.5",
+    "zdog": "^1.1.3"
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^6.0.3",
