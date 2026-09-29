@@ -73,6 +73,8 @@
   .sidebar-name {
     color: var(--accent);
     font-size: 5rem;
+    font-weight: 700;
+    letter-spacing: -0.045em;
     line-height: 1;
   }
 
@@ -119,7 +121,7 @@
   .paw-label {
     position: absolute;
     top: 50%;
-    left: calc(50% + 65px);
+    right: calc(50% + 65px);
     padding: 0.25rem 0.5rem;
     border-radius: 0.5rem;
     color: var(--text);
