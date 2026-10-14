@@ -43,6 +43,7 @@
   padding: clamp(1.25rem, 3vw, 3rem);
   border-radius: inherit;
   background: var(--frame);
+  box-shadow: var(--frame-elevation-shadow);
 }
 
 .project-frame > h1 {

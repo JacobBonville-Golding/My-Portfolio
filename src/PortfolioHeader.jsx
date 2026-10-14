@@ -2,8 +2,17 @@ import { useState } from "react";
 import catLogo from "./media/cats/cat-white.png";
 import blackCatLogo from "./media/cats/cat-black.png";
 import ThemeToggle from "./ThemeToggle.jsx";
+import MotionToggle from "./MotionToggle.jsx";
 
-function PortfolioHeader({ slides, activeIndex, onSelect, theme, onThemeToggle }) {
+function PortfolioHeader({
+    slides,
+    activeIndex,
+    onSelect,
+    theme,
+    onThemeToggle,
+    motionEnabled,
+    onMotionToggle,
+}) {
     const [menuOpen, setMenuOpen] = useState(false);
 
     function selectSlide(index) {
@@ -66,6 +75,14 @@ function PortfolioHeader({ slides, activeIndex, onSelect, theme, onThemeToggle }
                     theme={theme}
                     onToggle={() => {
                         onThemeToggle();
+                        setMenuOpen(false);
+                    }}
+                />
+                <MotionToggle
+                    variant="menu"
+                    motionEnabled={motionEnabled}
+                    onToggle={() => {
+                        onMotionToggle();
                         setMenuOpen(false);
                     }}
                 />
