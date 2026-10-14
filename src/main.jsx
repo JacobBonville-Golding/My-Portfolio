@@ -7,6 +7,7 @@ import DesktopSidebar from "./DesktopSidebar.jsx";
 import WelcomeContent from "./WelcomeContent.jsx";
 import GreetingTitle from "./GreetingTitle.jsx";
 import ThemeToggle from "./ThemeToggle.jsx";
+import MotionToggle from "./MotionToggle.jsx";
 import PawCursor from "./PawCursor.jsx";
 import PortfolioImage from "./PortfolioImage.jsx";
 import "./styles.scss";
@@ -128,6 +129,12 @@ function AboutDetails({ slide }) {
 
 function App() {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [motionEnabled, setMotionEnabled] = useState(() => {
+    const saved = window.localStorage.getItem("portfolio-motion");
+    if (saved === "on") return true;
+    if (saved === "off") return false;
+    return !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  });
   const [theme, setTheme] = useState(() => {
   const saved = window.localStorage.getItem("portfolio-theme");
   if (saved === "light" || saved === "dark") return saved;
@@ -141,12 +148,44 @@ useEffect(() => {
   window.localStorage.setItem("portfolio-theme", theme);
 }, [theme]);
 
+useEffect(() => {
+  document.documentElement.dataset.motion = motionEnabled ? "on" : "off";
+}, [motionEnabled]);
+
+useEffect(() => {
+  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+  function followSystemMotionPreference(event) {
+    if (window.localStorage.getItem("portfolio-motion") === null) {
+      setMotionEnabled(!event.matches);
+    }
+  }
+
+  reducedMotion.addEventListener("change", followSystemMotionPreference);
+  return () => {
+    reducedMotion.removeEventListener("change", followSystemMotionPreference);
+  };
+}, []);
+
 function toggleTheme() {
   setTheme((current) => (current === "dark" ? "light" : "dark"));
+}
+
+function toggleMotion() {
+  setMotionEnabled((enabled) => {
+    const nextValue = !enabled;
+    window.localStorage.setItem(
+      "portfolio-motion",
+      nextValue ? "on" : "off",
+    );
+    return nextValue;
+  });
 }
   const slide = slides[activeIndex];
 
   return (
+    <>
+    <div className="animated-background" aria-hidden="true" />
     <div className="site-shell">
     <PawCursor theme={theme} />
     <DesktopSidebar
@@ -161,10 +200,16 @@ function toggleTheme() {
       onSelect={setActiveIndex}
       theme={theme}
       onThemeToggle={toggleTheme}
+      motionEnabled={motionEnabled}
+      onMotionToggle={toggleMotion}
     />
 
       <main className="page">
         <ThemeToggle theme={theme} onToggle={toggleTheme} />
+        <MotionToggle
+          motionEnabled={motionEnabled}
+          onToggle={toggleMotion}
+        />
         <div className="frame-stack">
           <article className="project-frame" aria-labelledby="slide-title">
             {slide.id === "welcome" ? (
@@ -214,6 +259,7 @@ function toggleTheme() {
         </button>
       </nav>
     </div>
+    </>
   );
 }
 

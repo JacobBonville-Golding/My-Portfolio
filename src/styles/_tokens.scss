@@ -12,6 +12,18 @@
   --muted: #d3deed;
   --button-text: #fff;
   --shadow: #0008;
+  --frame-elevation-shadow:
+    0 5px 12px rgb(0 0 0 / 46%),
+    0 30px 68px rgb(0 0 0 / 54%);
+  --sidebar-surface-start: #20262c;
+  --sidebar-surface-end: #14181d;
+  --sidebar-glow: rgb(36 73 114 / 42%);
+  --sidebar-edge: rgb(148 191 255 / 20%);
+  --sidebar-shadow: 18px 0 42px rgb(0 0 0 / 42%);
+  --motion-one: #191c1f;
+  --motion-two: #244972;
+  --motion-three: #3b689c;
+  --motion-four: #0c0e10;
 }
 
 :root[data-theme="light"] {
@@ -28,4 +40,16 @@
   --muted: #665f56;
   --button-text: #1f2328;
   --shadow: rgb(7 9 12 / 24%);
+  --frame-elevation-shadow:
+    0 6px 14px rgb(31 35 40 / 24%),
+    0 34px 72px rgb(74 48 20 / 36%);
+  --sidebar-surface-start: #fffdf9;
+  --sidebar-surface-end: #e7d0b3;
+  --sidebar-glow: rgb(159 99 31 / 24%);
+  --sidebar-edge: rgb(159 99 31 / 38%);
+  --sidebar-shadow: 20px 0 48px rgb(74 48 20 / 32%);
+  --motion-one: #fffcf7;
+  --motion-two: #f3e9dc;
+  --motion-three: #d8b88e;
+  --motion-four: #e8d8c3;
 }
