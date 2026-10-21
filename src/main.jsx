@@ -29,12 +29,59 @@ function ProjectPreview({ slide }) {
   );
 }
 
+function ToolSection({ tools }) {
+  if (!tools?.length) return null;
+
+  return (
+    <section>
+      <h2>Built with</h2>
+      <ul className="tool-list">
+        {tools.map((tool) => (
+          <li key={tool}>{tool}</li>
+        ))}
+      </ul>
+    </section>
+  );
+}
+
+function Collaboration({ credit }) {
+  if (!credit) return null;
+
+  return (
+    <section>
+      <h2>Collaboration</h2>
+      <p>{credit}</p>
+    </section>
+  );
+}
+
+function ProjectLinks({ links }) {
+  if (!links?.length) return null;
+
+  return (
+    <div className="project-links">
+      {links.map((link) => (
+        <a
+          key={link.href}
+          href={link.href}
+          target="_blank"
+          rel="noreferrer"
+        >
+          {link.label}
+        </a>
+      ))}
+    </div>
+  );
+}
+
 function ProjectDetails({ slide }) {
   const hasPreview = Boolean(projectImages[slide.id]);
+  const hasSideMetadata = hasPreview && Boolean(slide.credit || slide.links?.length);
+  const showsToolsBesideImage = slide.toolsPlacement === "side";
   const layoutClasses = ["project-layout"];
 
   if (!hasPreview) layoutClasses.push("project-layout--text-only");
-  if (slide.id === "sassy-spaw") layoutClasses.push("project-layout--balanced");
+  if (slide.layout === "balanced") layoutClasses.push("project-layout--balanced");
 
   return (
     <div className={layoutClasses.join(" ")}>
@@ -72,38 +119,23 @@ function ProjectDetails({ slide }) {
           </section>
         )}
 
-        {slide.tools?.length > 0 && (
-          <section>
-            <h2>Built with</h2>
-            <ul className="tool-list">
-              {slide.tools.map((tool) => (
-                <li key={tool}>{tool}</li>
-              ))}
-            </ul>
-          </section>
-        )}
+        {!showsToolsBesideImage && <ToolSection tools={slide.tools} />}
 
-        {slide.credit && <p>{slide.credit}</p>}
-
-        {slide.links?.length > 0 && (
-          <div className="project-links">
-            {slide.links.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                target="_blank"
-                rel="noreferrer"
-              >
-                {link.label}
-              </a>
-            ))}
-          </div>
-        )}
+        {!hasSideMetadata && <Collaboration credit={slide.credit} />}
+        {!hasSideMetadata && <ProjectLinks links={slide.links} />}
       </div>
 
       {hasPreview && (
         <div className="project-side">
           <ProjectPreview slide={slide} />
+
+          {hasSideMetadata && (
+            <div className="project-side-meta">
+              {showsToolsBesideImage && <ToolSection tools={slide.tools} />}
+              <Collaboration credit={slide.credit} />
+              <ProjectLinks links={slide.links} />
+            </div>
+          )}
         </div>
       )}
     </div>

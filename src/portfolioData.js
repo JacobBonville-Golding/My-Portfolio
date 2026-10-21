@@ -78,6 +78,8 @@ export const slides = [
     id: "sassy-spaw",
     navLabel: "Capstone",
     title: "Sassy Spaw Capstone",
+    layout: "balanced",
+    toolsPlacement: "side",
     imageAlt:
       "Sassy Spaw website displayed responsively on a laptop and mobile phone",
     tagline: "A connected booking experience for pets, people and groomers.",
