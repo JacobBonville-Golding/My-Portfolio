@@ -14,6 +14,8 @@ function PawStamp({ x, y, angle }) {
 }
 
 function DesktopSidebar({ slides, activeIndex, onSelect, theme }) {
+    const behindWorkIndex = slides.findIndex((slide) => slide.id === "portfolio");
+
     return (
         <aside className="desktop-sidebar" aria-label="Portfolio sidebar">
             <button
@@ -67,7 +69,8 @@ function DesktopSidebar({ slides, activeIndex, onSelect, theme }) {
             <button
                 className="behind-button"
                 type="button"
-                onClick={() => onSelect(4)}
+                disabled={behindWorkIndex === -1}
+                onClick={() => onSelect(behindWorkIndex)}
             >
                 Behind the Work
             </button>
