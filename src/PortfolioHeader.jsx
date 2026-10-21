@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import catLogo from "./media/cats/cat-white.png";
 import blackCatLogo from "./media/cats/cat-black.png";
 import ThemeToggle from "./ThemeToggle.jsx";
@@ -14,15 +14,20 @@ function PortfolioHeader({
     onMotionToggle,
 }) {
     const [menuOpen, setMenuOpen] = useState(false);
+    const menuToggleRef = useRef(null);
 
     function selectSlide(index) {
         onSelect(index);
         setMenuOpen(false);
+        window.requestAnimationFrame(() => {
+            document.getElementById("slide-title")?.focus();
+        });
     }
 
     function handleKeyDown(event) {
-        if (event.key === "Escape") {
+        if (event.key === "Escape" && menuOpen) {
             setMenuOpen(false);
+            window.requestAnimationFrame(() => menuToggleRef.current?.focus());
         }
     }
 
@@ -42,6 +47,7 @@ function PortfolioHeader({
             <button
             className="menu-toggle"
             type="button"
+            ref={menuToggleRef}
             aria-label={menuOpen ? "Close slide menu" : "Open slide menu"}
             aria-expanded={menuOpen}
             aria-controls="slide-menu"

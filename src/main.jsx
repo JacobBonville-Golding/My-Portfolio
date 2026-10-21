@@ -280,7 +280,7 @@ function toggleMotion() {
             {slide.id === "welcome" ? (
               <GreetingTitle />
             ) : (
-              <h1 id="slide-title">{slide.title}</h1>
+              <h1 id="slide-title" tabIndex={-1}>{slide.title}</h1>
             )}
 
             <div
