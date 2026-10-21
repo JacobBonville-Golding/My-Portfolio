@@ -74,11 +74,90 @@ export const slides = [
       },
     ],
   },
-    {
+  {
+    id: "sassy-spaw",
+    navLabel: "Capstone",
+    title: "Sassy Spaw Capstone",
+    tagline: "A connected booking experience for pets, people and groomers.",
+    summary:
+      "A team-built grooming website that brings service selection, groomer availability, recurring plans and deposits into one customer booking flow.",
+    tools: [
+      "WordPress",
+      "WooCommerce",
+      "WooCommerce Bookings",
+      "Product Add-Ons",
+      "Deposits",
+    ],
+    contributions: [
+      "Configured service bookings by groomer, date, time, pet size and optional extras.",
+      "Built groomer preselection links and connected Spaw Schedule choices to their booking products.",
+      "Configured and tested deposits, free consultations, cancellations and the Book again flow.",
+    ],
+    takeaway:
+      "I learned how connected WooCommerce extensions depend on careful planning and end-to-end testing, especially when one choice affects availability, pricing and checkout.",
+    credit: "Team capstone project",
+    links: [
+      {
+        label: "View Live Site",
+        href: "https://sassyspaw.bcitwebdeveloper.ca/",
+      },
+    ],
+  },
+  {
+    id: "portfolio",
+    navLabel: "This Portfolio",
+    title: "About This Portfolio",
+    tagline: "Personal by design. Accessible by default.",
+    summary:
+      "This portfolio combines a cat-inspired visual identity with an interface designed to remain clear, responsive and comfortable to use.",
+    accessibilityFeatures: [
+      {
+        title: "Keyboard navigation",
+        description:
+          "Slide controls, menus, theme settings and project links use semantic buttons and links that can be reached without a mouse.",
+      },
+      {
+        title: "Visible focus",
+        description:
+          "Interactive controls keep clear focus states so keyboard users can always see where they are on the page.",
+      },
+      {
+        title: "Motion controls",
+        description:
+          "The ambient background includes a visible pause control, and the selected motion preference is saved for future visits.",
+      },
+      {
+        title: "Reduced-motion support",
+        description:
+          "The portfolio respects the device’s reduced-motion setting and minimizes animation unless the visitor chooses otherwise.",
+      },
+      {
+        title: "Light and dark themes",
+        description:
+          "Both themes preserve readable contrast and visual hierarchy while allowing visitors to choose the appearance that is most comfortable.",
+      },
+      {
+        title: "Responsive reading",
+        description:
+          "Fluid type, mobile layouts and scrollable content panels keep each slide usable across different screen sizes and zoom levels.",
+      },
+      {
+        title: "Image descriptions",
+        description:
+          "Meaningful project and personal images include descriptive alternative text, while decorative visuals are hidden from assistive technology.",
+      },
+      {
+        title: "Clear structure and status",
+        description:
+          "Headings, labelled regions and announced slide status give the experience a predictable structure for assistive technology.",
+      },
+    ],
+  },
+  {
     id: "about",
     navLabel: "About",
     title: "Meet Jake",
-    tagline: "Good code. Clear experiences. Cat-approved details.",
+    tagline: "Good code. Clear experiences.\nCat-approved details.",
     summary:
       "I’m a web developer who enjoys solving problems, matching designs carefully and adding just enough personality to make a website memorable.",
     directors:

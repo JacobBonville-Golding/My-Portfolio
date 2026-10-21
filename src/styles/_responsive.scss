@@ -153,7 +153,7 @@
   .behind-button {
     width: 180px;
     min-height: 44px;
-    border: 0;
+    border: 2px solid var(--accent);
     border-radius: 999px;
     color: var(--button-text);
     background: var(--layer);
