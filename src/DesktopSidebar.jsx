@@ -81,7 +81,8 @@ function DesktopSidebar({ slides, activeIndex, onSelect, theme }) {
                 target="_blank"
                 rel="noreferrer"
                 >
-                    GitHub
+                    GitHub <span aria-hidden="true">↗</span>
+                    <span className="screen-reader-only"> (opens in a new tab)</span>
                 </a>
                 <small>© {new Date().getFullYear()} Jacob Bonville-Golding</small>
             </footer>

@@ -67,7 +67,8 @@ function ProjectLinks({ links }) {
           target="_blank"
           rel="noreferrer"
         >
-          {link.label}
+          {link.label} <span aria-hidden="true">↗</span>
+          <span className="screen-reader-only"> (opens in a new tab)</span>
         </a>
       ))}
     </div>
