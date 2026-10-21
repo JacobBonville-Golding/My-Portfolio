@@ -30,7 +30,7 @@
 ## 4. Custom paw cursor
 
 - A decorative cat paw follows the pointer and changes position based on clickable or unavailable elements.
-- It is disabled for reduced-motion users, touch devices and compact screens.
+- It is disabled for reduced-motion users, touch devices, compact screens and forced-colour or increased-contrast display modes.
 - When disabled, the normal system cursor is restored.
 - The custom cursor is ignored by screen readers and cannot intercept interaction.
 - Keyboard users continue to receive the existing visible focus indicators.

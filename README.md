@@ -40,7 +40,7 @@ To keep these effects accessible:
 - The site respects `prefers-reduced-motion`.
 - Decorative animation includes a keyboard-accessible pause/play control.
 - Decorative motion is hidden from assistive technology.
-- Pointer effects are disabled on touch devices and compact screens.
+- Pointer effects are disabled on touch devices, compact screens and high-contrast display modes.
 - The welcome animation can be skipped and provides stable screen-reader text.
 - Important information never depends on animation, shadows or colour alone.
 - Project content remains available when decorative effects are disabled.
