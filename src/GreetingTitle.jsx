@@ -14,7 +14,7 @@ const greetings = [
   "Hello",
 ];
 
-function GreetingTitle() {
+function GreetingTitle({ motionEnabled }) {
   const textRef = useRef(null);
   const timerRef = useRef(null);
   const finishedRef = useRef(false);
@@ -39,7 +39,12 @@ function GreetingTitle() {
 
       if (!textRef.current) return;
 
-      if (finishedRef.current || reducedMotion.matches || compactScreen.matches) {
+      if (
+        finishedRef.current ||
+        !motionEnabled ||
+        reducedMotion.matches ||
+        compactScreen.matches
+      ) {
         textRef.current.textContent = "Hello";
         setRunning(false);
         return;
@@ -99,7 +104,7 @@ function GreetingTitle() {
       reducedMotion.removeEventListener("change", start);
       compactScreen.removeEventListener("change", start);
     };
-  }, []);
+  }, [motionEnabled]);
 
   function skipGreetings() {
     finishedRef.current = true;
@@ -110,7 +115,7 @@ function GreetingTitle() {
 
   return (
     <>
-      <h1 id="slide-title" className="greeting-title">
+      <h1 id="slide-title" className="greeting-title" tabIndex={-1}>
         <span className="screen-reader-only">
           Hello and welcome to Jake&apos;s portfolio
         </span>

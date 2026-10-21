@@ -21,7 +21,7 @@ function cursorStatus(target, pressed) {
   return "default";
 }
 
-function PawCursor({ size = 46, theme = "light" }) {
+function PawCursor({ size = 46, theme = "light", motionEnabled }) {
   const svgRef = useRef(null);
   const mouse = useRef({ x: -100, y: -100 });
   const previous = useRef({ x: -100, y: -100 });
@@ -30,33 +30,34 @@ function PawCursor({ size = 46, theme = "light" }) {
   const frame = useRef(null);
   const [laser, setLaser] = useState({ x: -100, y: -100, status: "default" });
   const [prints, setPrints] = useState([]);
-  const [motionDisabled, setMotionDisabled] = useState(() =>
-    window.matchMedia("(max-width: 760px), (max-height: 500px), (pointer: coarse), (prefers-reduced-motion: reduce)").matches,
+  const [environmentDisablesCursor, setEnvironmentDisablesCursor] = useState(() =>
+    window.matchMedia("(max-width: 760px), (max-height: 500px), (pointer: coarse), (prefers-reduced-motion: reduce), (forced-colors: active), (prefers-contrast: more)").matches,
   );
+  const cursorDisabled = environmentDisablesCursor || !motionEnabled;
 
   useEffect(() => {
-    const motionQuery = window.matchMedia(
-      "(max-width: 760px), (max-height: 500px), (pointer: coarse), (prefers-reduced-motion: reduce)"
+    const cursorQuery = window.matchMedia(
+      "(max-width: 760px), (max-height: 500px), (pointer: coarse), (prefers-reduced-motion: reduce), (forced-colors: active), (prefers-contrast: more)"
     );
 
-    function updateMotion() {
-      setMotionDisabled(motionQuery.matches);
+    function updateCursorPreference() {
+      setEnvironmentDisablesCursor(cursorQuery.matches);
 
-      if (motionQuery.matches) {
+      if (cursorQuery.matches) {
         setLaser({ x: -100, y: -100, status: "default" });
         setPrints([]);
       }
     }
 
-    motionQuery.addEventListener("change", updateMotion);
-    updateMotion();
+    cursorQuery.addEventListener("change", updateCursorPreference);
+    updateCursorPreference();
 
-    return () => motionQuery.removeEventListener("change", updateMotion);
+    return () => cursorQuery.removeEventListener("change", updateCursorPreference);
   }, []);
 
   useEffect(() => {
     const svg = svgRef.current;
-    if (!svg || motionDisabled) return undefined;
+    if (!svg || cursorDisabled) return undefined;
 
     const scale = (value) => value * (size / 80);
     const paw = new Zdog.Illustration({ element: svg });
@@ -192,9 +193,9 @@ function PawCursor({ size = 46, theme = "light" }) {
       cancelAnimationFrame(frame.current);
       paw.remove();
     };
-  }, [size, theme, motionDisabled]);
+  }, [size, theme, cursorDisabled]);
 
-  if (motionDisabled) return null;
+  if (cursorDisabled) return null;
 
   return (
     <>

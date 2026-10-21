@@ -38,10 +38,27 @@ button:disabled {
 
 button:focus-visible,
 a:focus-visible {
-  outline: 3px solid var(--accent);
-  outline-offset: 3px;
+  outline: 3px solid var(--focus-inner);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 5px var(--focus-outer);
 }
 
 a {
   color: var(--accent);
+}
+
+.skip-link {
+  position: fixed;
+  top: 0.75rem;
+  left: 0.75rem;
+  z-index: 2147483646;
+  padding: 0.75rem 1rem;
+  border-radius: 0.75rem;
+  color: var(--text);
+  background: var(--content);
+  transform: translateY(calc(-100% - 1rem));
+}
+
+.skip-link:focus {
+  transform: translateY(0);
 }

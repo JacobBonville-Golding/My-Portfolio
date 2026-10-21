@@ -4,7 +4,7 @@ import whiteCat from "./media/cats/sitting-cat-white-clean.png";
 import stebanPhoto from "./media/cats/steban-480.webp";
 import stebanPhotoLarge from "./media/cats/steban-960.webp";
 
-function SittingCat({ color, src }) {
+function SittingCat({ color, src, motionEnabled }) {
   const eyesRef = useRef([]);
 
   useEffect(() => {
@@ -40,7 +40,7 @@ function SittingCat({ color, src }) {
       window.removeEventListener("pointermove", followPointer);
       centerEyes();
 
-      if (!stillEyes.matches) {
+      if (motionEnabled && !stillEyes.matches) {
         window.addEventListener("pointermove", followPointer, { passive: true });
       }
     }
@@ -54,7 +54,7 @@ function SittingCat({ color, src }) {
       window.removeEventListener("pointermove", followPointer);
       window.removeEventListener("blur", centerEyes);
     };
-  }, []);
+  }, [motionEnabled]);
 
   return (
     <figure className={`sitting-cat sitting-cat--${color}`}>
@@ -75,14 +75,14 @@ function SittingCat({ color, src }) {
   );
 }
 
-function WelcomeContent({ introduction }) {
+function WelcomeContent({ introduction, motionEnabled }) {
   return (
     <div className="welcome-content">
       <p className="screen-reader-only">{introduction}</p>
 
       <div className="welcome-cats" aria-hidden="true">
-        <SittingCat color="black" src={blackCat} />
-        <SittingCat color="white" src={whiteCat} />
+        <SittingCat color="black" src={blackCat} motionEnabled={motionEnabled} />
+        <SittingCat color="white" src={whiteCat} motionEnabled={motionEnabled} />
       </div>
 
       <div className="welcome-fallback-photo" aria-hidden="true">

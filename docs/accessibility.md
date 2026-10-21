@@ -3,10 +3,11 @@
 ## 1. Animated gradient background
 
 - A slow-moving gradient adds visual interest behind the portfolio content.
-- A visible pause/play button works with a keyboard.
+- A visible pause/play button works with a keyboard and controls all decorative motion.
 - The button has accessible labels and communicates its current state.
 - Animation starts disabled when the user prefers reduced motion.
 - The user’s selection is remembered between visits.
+- Pausing also stops the welcome typing, pointer-tracking eyes, custom cursor and paw prints.
 - Text remains on solid surfaces, so the moving colours do not affect readability or contrast.
 
 ## 2. Multilingual welcome message
@@ -29,7 +30,7 @@
 ## 4. Custom paw cursor
 
 - A decorative cat paw follows the pointer and changes position based on clickable or unavailable elements.
-- It is disabled for reduced-motion users, touch devices and compact screens.
+- It is disabled for reduced-motion users, touch devices, compact screens and forced-colour or increased-contrast display modes.
 - When disabled, the normal system cursor is restored.
 - The custom cursor is ignored by screen readers and cannot intercept interaction.
 - Keyboard users continue to receive the existing visible focus indicators.

@@ -78,6 +78,10 @@ export const slides = [
     id: "sassy-spaw",
     navLabel: "Capstone",
     title: "Sassy Spaw Capstone",
+    layout: "balanced",
+    toolsPlacement: "side",
+    imageAlt:
+      "Sassy Spaw website displayed responsively on a laptop and mobile phone",
     tagline: "A connected booking experience for pets, people and groomers.",
     summary:
       "A team-built grooming website that brings service selection, groomer availability, recurring plans and deposits into one customer booking flow.",
@@ -124,7 +128,7 @@ export const slides = [
       {
         title: "Motion controls",
         description:
-          "The ambient background includes a visible pause control, and the selected motion preference is saved for future visits.",
+          "Decorative animation includes a visible pause control, and the selected motion preference is saved for future visits.",
       },
       {
         title: "Reduced-motion support",

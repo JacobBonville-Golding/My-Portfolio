@@ -1,14 +1,15 @@
 function MotionToggle({ motionEnabled, onToggle, variant = "floating" }) {
   const action = motionEnabled ? "Pause" : "Play";
+  const state = motionEnabled ? "On" : "Off";
 
   return (
     <button
       className={`motion-toggle motion-toggle--${variant}`}
       type="button"
       onClick={onToggle}
-      aria-label={`${action} background animation`}
+      aria-label={variant === "menu" ? undefined : "Decorative animation"}
       aria-pressed={motionEnabled}
-      title={`${action} background animation`}
+      title={`${action} decorative animation`}
     >
       <svg viewBox="0 0 100 100" aria-hidden="true" focusable="false">
         {motionEnabled ? (
@@ -20,7 +21,7 @@ function MotionToggle({ motionEnabled, onToggle, variant = "floating" }) {
           <path d="M34 24 76 50 34 76Z" />
         )}
       </svg>
-      {variant === "menu" && <span>{action} background animation</span>}
+      {variant === "menu" && <span>Decorative animation: {state}</span>}
     </button>
   );
 }

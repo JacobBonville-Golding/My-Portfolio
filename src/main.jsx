@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { createRoot } from "react-dom/client";
 import { slides } from "./portfolioData.js";
 import { aboutImages, projectImages } from "./imageData.js";
@@ -23,19 +23,69 @@ function ProjectPreview({ slide }) {
         src={image.small}
         srcSet={`${image.small} 480w, ${image.large} 960w`}
         sizes="(max-width: 600px) 90vw, 480px"
-        alt={`${slide.title} homepage presented in a device mockup`}
+        alt={slide.imageAlt || `${slide.title} homepage presented in a device mockup`}
       />
     </figure>
   );
 }
 
-function ProjectDetails({ slide }) {
-  const hasPreview = Boolean(projectImages[slide.id]);
+function ToolSection({ tools }) {
+  if (!tools?.length) return null;
 
   return (
-    <div
-      className={hasPreview ? "project-layout" : "project-layout project-layout--text-only"}
-    >
+    <section>
+      <h2>Built with</h2>
+      <ul className="tool-list">
+        {tools.map((tool) => (
+          <li key={tool}>{tool}</li>
+        ))}
+      </ul>
+    </section>
+  );
+}
+
+function Collaboration({ credit }) {
+  if (!credit) return null;
+
+  return (
+    <section>
+      <h2>Collaboration</h2>
+      <p>{credit}</p>
+    </section>
+  );
+}
+
+function ProjectLinks({ links }) {
+  if (!links?.length) return null;
+
+  return (
+    <div className="project-links">
+      {links.map((link) => (
+        <a
+          key={link.href}
+          href={link.href}
+          target="_blank"
+          rel="noreferrer"
+        >
+          {link.label} <span aria-hidden="true">↗</span>
+          <span className="screen-reader-only"> (opens in a new tab)</span>
+        </a>
+      ))}
+    </div>
+  );
+}
+
+function ProjectDetails({ slide }) {
+  const hasPreview = Boolean(projectImages[slide.id]);
+  const hasSideMetadata = hasPreview && Boolean(slide.credit || slide.links?.length);
+  const showsToolsBesideImage = slide.toolsPlacement === "side";
+  const layoutClasses = ["project-layout"];
+
+  if (!hasPreview) layoutClasses.push("project-layout--text-only");
+  if (slide.layout === "balanced") layoutClasses.push("project-layout--balanced");
+
+  return (
+    <div className={layoutClasses.join(" ")}>
       <div className="project-copy">
         <p className="tagline">{slide.tagline}</p>
         <p>{slide.summary}</p>
@@ -70,38 +120,23 @@ function ProjectDetails({ slide }) {
           </section>
         )}
 
-        {slide.tools?.length > 0 && (
-          <section>
-            <h2>Built with</h2>
-            <ul className="tool-list">
-              {slide.tools.map((tool) => (
-                <li key={tool}>{tool}</li>
-              ))}
-            </ul>
-          </section>
-        )}
+        {!showsToolsBesideImage && <ToolSection tools={slide.tools} />}
 
-        {slide.credit && <p>{slide.credit}</p>}
-
-        {slide.links?.length > 0 && (
-          <div className="project-links">
-            {slide.links.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                target="_blank"
-                rel="noreferrer"
-              >
-                {link.label}
-              </a>
-            ))}
-          </div>
-        )}
+        {!hasSideMetadata && <Collaboration credit={slide.credit} />}
+        {!hasSideMetadata && <ProjectLinks links={slide.links} />}
       </div>
 
       {hasPreview && (
         <div className="project-side">
           <ProjectPreview slide={slide} />
+
+          {hasSideMetadata && (
+            <div className="project-side-meta">
+              {showsToolsBesideImage && <ToolSection tools={slide.tools} />}
+              <Collaboration credit={slide.credit} />
+              <ProjectLinks links={slide.links} />
+            </div>
+          )}
         </div>
       )}
     </div>
@@ -155,6 +190,7 @@ function AboutDetails({ slide }) {
 
 function App() {
   const [activeIndex, setActiveIndex] = useState(0);
+  const projectCardRef = useRef(null);
   const [motionEnabled, setMotionEnabled] = useState(() => {
     const saved = window.localStorage.getItem("portfolio-motion");
     if (saved === "on") return true;
@@ -177,6 +213,10 @@ useEffect(() => {
 useEffect(() => {
   document.documentElement.dataset.motion = motionEnabled ? "on" : "off";
 }, [motionEnabled]);
+
+useEffect(() => {
+  projectCardRef.current?.scrollTo({ top: 0, left: 0 });
+}, [activeIndex]);
 
 useEffect(() => {
   const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -207,23 +247,33 @@ function toggleMotion() {
     return nextValue;
   });
 }
+
+function selectSlide(index) {
+  setActiveIndex(index);
+  window.requestAnimationFrame(() => {
+    document.getElementById("slide-title")?.focus();
+  });
+}
   const slide = slides[activeIndex];
 
   return (
     <>
+    <a className="skip-link" href="#slide-title">
+      Skip to project content
+    </a>
     <div className="animated-background" aria-hidden="true" />
     <div className="site-shell">
-    <PawCursor theme={theme} />
+    <PawCursor theme={theme} motionEnabled={motionEnabled} />
     <DesktopSidebar
       slides={slides}
       activeIndex={activeIndex}
-      onSelect={setActiveIndex}
+      onSelect={selectSlide}
       theme={theme}
     />
     <PortfolioHeader
       slides={slides}
       activeIndex={activeIndex}
-      onSelect={setActiveIndex}
+      onSelect={selectSlide}
       theme={theme}
       onThemeToggle={toggleTheme}
       motionEnabled={motionEnabled}
@@ -239,9 +289,9 @@ function toggleMotion() {
         <div className="frame-stack">
           <article className="project-frame" aria-labelledby="slide-title">
             {slide.id === "welcome" ? (
-              <GreetingTitle />
+              <GreetingTitle motionEnabled={motionEnabled} />
             ) : (
-              <h1 id="slide-title">{slide.title}</h1>
+              <h1 id="slide-title" tabIndex={-1}>{slide.title}</h1>
             )}
 
             <div
@@ -249,9 +299,13 @@ function toggleMotion() {
               role="region"
               aria-label={`${slide.title} details`}
               tabIndex={0}
+              ref={projectCardRef}
             >
               {slide.id === "welcome" && (
-                <WelcomeContent introduction={slide.introduction} />
+                <WelcomeContent
+                  introduction={slide.introduction}
+                  motionEnabled={motionEnabled}
+                />
               )}
               {slide.id === "about" && <AboutDetails slide={slide} />}
               {slide.id !== "welcome" && slide.id !== "about" && (
@@ -266,12 +320,12 @@ function toggleMotion() {
         <button
           type="button"
           disabled={activeIndex === 0}
-          onClick={() => setActiveIndex(activeIndex - 1)}
+          onClick={() => selectSlide(activeIndex - 1)}
         >
           Previous
         </button>
 
-        <span aria-live="polite">
+        <span>
           {String(activeIndex).padStart(2, "0")} /{" "}
           {String(slides.length - 1).padStart(2, "0")}
         </span>
@@ -279,7 +333,7 @@ function toggleMotion() {
         <button
           type="button"
           disabled={activeIndex === slides.length - 1}
-          onClick={() => setActiveIndex(activeIndex + 1)}
+          onClick={() => selectSlide(activeIndex + 1)}
         >
           Next
         </button>
