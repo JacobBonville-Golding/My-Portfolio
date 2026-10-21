@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { createRoot } from "react-dom/client";
 import { slides } from "./portfolioData.js";
 import { aboutImages, projectImages } from "./imageData.js";
@@ -189,6 +189,7 @@ function AboutDetails({ slide }) {
 
 function App() {
   const [activeIndex, setActiveIndex] = useState(0);
+  const projectCardRef = useRef(null);
   const [motionEnabled, setMotionEnabled] = useState(() => {
     const saved = window.localStorage.getItem("portfolio-motion");
     if (saved === "on") return true;
@@ -211,6 +212,10 @@ useEffect(() => {
 useEffect(() => {
   document.documentElement.dataset.motion = motionEnabled ? "on" : "off";
 }, [motionEnabled]);
+
+useEffect(() => {
+  projectCardRef.current?.scrollTo({ top: 0, left: 0 });
+}, [activeIndex]);
 
 useEffect(() => {
   const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -283,6 +288,7 @@ function toggleMotion() {
               role="region"
               aria-label={`${slide.title} details`}
               tabIndex={0}
+              ref={projectCardRef}
             >
               {slide.id === "welcome" && (
                 <WelcomeContent introduction={slide.introduction} />
