@@ -46,3 +46,19 @@ a:focus-visible {
 a {
   color: var(--accent);
 }
+
+.skip-link {
+  position: fixed;
+  top: 0.75rem;
+  left: 0.75rem;
+  z-index: 2147483646;
+  padding: 0.75rem 1rem;
+  border-radius: 0.75rem;
+  color: var(--text);
+  background: var(--content);
+  transform: translateY(calc(-100% - 1rem));
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}

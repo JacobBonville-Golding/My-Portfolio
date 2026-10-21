@@ -258,6 +258,9 @@ function selectSlide(index) {
 
   return (
     <>
+    <a className="skip-link" href="#slide-title">
+      Skip to project content
+    </a>
     <div className="animated-background" aria-hidden="true" />
     <div className="site-shell">
     <PawCursor theme={theme} motionEnabled={motionEnabled} />
