@@ -4,6 +4,8 @@ import wordpressSmall from "./media/projects/wordpress-presentation-480.webp";
 import wordpressLarge from "./media/projects/wordpress-presentation-960.webp";
 import pongSmall from "./media/projects/pong-presentation-480.webp";
 import pongLarge from "./media/projects/pong-presentation-960.webp";
+import sassySpawSmall from "./media/projects/sassy-spaw-presentation-480.jpg";
+import sassySpawLarge from "./media/projects/sassy-spaw-presentation-960.jpg";
 
 import stebanSmall from "./media/cats/steban-480.webp";
 import stebanLarge from "./media/cats/steban-960.webp";
@@ -24,6 +26,10 @@ export const projectImages = {
   pong: {
     small: pongSmall,
     large: pongLarge,
+  },
+  "sassy-spaw": {
+    small: sassySpawSmall,
+    large: sassySpawLarge,
   },
 };
 

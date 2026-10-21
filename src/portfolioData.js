@@ -78,6 +78,8 @@ export const slides = [
     id: "sassy-spaw",
     navLabel: "Capstone",
     title: "Sassy Spaw Capstone",
+    imageAlt:
+      "Sassy Spaw website displayed responsively on a laptop and mobile phone",
     tagline: "A connected booking experience for pets, people and groomers.",
     summary:
       "A team-built grooming website that brings service selection, groomer availability, recurring plans and deposits into one customer booking flow.",

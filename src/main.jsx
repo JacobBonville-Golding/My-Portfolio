@@ -23,7 +23,7 @@ function ProjectPreview({ slide }) {
         src={image.small}
         srcSet={`${image.small} 480w, ${image.large} 960w`}
         sizes="(max-width: 600px) 90vw, 480px"
-        alt={`${slide.title} homepage presented in a device mockup`}
+        alt={slide.imageAlt || `${slide.title} homepage presented in a device mockup`}
       />
     </figure>
   );
@@ -31,11 +31,13 @@ function ProjectPreview({ slide }) {
 
 function ProjectDetails({ slide }) {
   const hasPreview = Boolean(projectImages[slide.id]);
+  const layoutClasses = ["project-layout"];
+
+  if (!hasPreview) layoutClasses.push("project-layout--text-only");
+  if (slide.id === "sassy-spaw") layoutClasses.push("project-layout--balanced");
 
   return (
-    <div
-      className={hasPreview ? "project-layout" : "project-layout project-layout--text-only"}
-    >
+    <div className={layoutClasses.join(" ")}>
       <div className="project-copy">
         <p className="tagline">{slide.tagline}</p>
         <p>{slide.summary}</p>
