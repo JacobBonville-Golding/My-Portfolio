@@ -29,12 +29,40 @@
   min-width: 0;
 }
 
+.project-layout--text-only {
+  grid-template-columns: minmax(0, 58rem);
+}
+
 .project-copy section {
   margin-top: 1.25rem;
 }
 
 .project-copy section p {
   margin-top: 0;
+}
+
+.accessibility-features > h2 {
+  margin-bottom: 0.75rem;
+}
+
+.accessibility-feature-grid {
+  display: grid;
+  gap: 1rem;
+}
+
+.accessibility-feature-grid article {
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--line);
+}
+
+.accessibility-feature-grid h3 {
+  margin: 0 0 0.35rem;
+  color: var(--accent);
+  font-size: 1rem;
+}
+
+.accessibility-feature-grid p {
+  margin: 0;
 }
 
 .project-side {
@@ -50,6 +78,10 @@
 @media (min-width: 760px) {
   .project-layout {
     grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+  }
+
+  .accessibility-feature-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 

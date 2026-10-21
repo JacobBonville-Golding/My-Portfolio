@@ -30,54 +30,80 @@ function ProjectPreview({ slide }) {
 }
 
 function ProjectDetails({ slide }) {
+  const hasPreview = Boolean(projectImages[slide.id]);
+
   return (
-    <div className="project-layout">
+    <div
+      className={hasPreview ? "project-layout" : "project-layout project-layout--text-only"}
+    >
       <div className="project-copy">
         <p className="tagline">{slide.tagline}</p>
         <p>{slide.summary}</p>
 
-        <section>
-          <h2>What I contributed</h2>
-          <ul>
-            {slide.contributions.map((item) => (
-              <li key={item}>{item}</li>
+        {slide.accessibilityFeatures ? (
+          <section className="accessibility-features">
+            <h2>Accessibility built in</h2>
+            <div className="accessibility-feature-grid">
+              {slide.accessibilityFeatures.map((feature) => (
+                <article key={feature.title}>
+                  <h3>{feature.title}</h3>
+                  <p>{feature.description}</p>
+                </article>
+              ))}
+            </div>
+          </section>
+        ) : (
+          <section>
+            <h2>What I contributed</h2>
+            <ul>
+              {slide.contributions.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          </section>
+        )}
+
+        {slide.takeaway && (
+          <section>
+            <h2>The takeaway</h2>
+            <p>{slide.takeaway}</p>
+          </section>
+        )}
+
+        {slide.tools?.length > 0 && (
+          <section>
+            <h2>Built with</h2>
+            <ul className="tool-list">
+              {slide.tools.map((tool) => (
+                <li key={tool}>{tool}</li>
+              ))}
+            </ul>
+          </section>
+        )}
+
+        {slide.credit && <p>{slide.credit}</p>}
+
+        {slide.links?.length > 0 && (
+          <div className="project-links">
+            {slide.links.map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                target="_blank"
+                rel="noreferrer"
+              >
+                {link.label}
+              </a>
             ))}
-          </ul>
-        </section>
+          </div>
+        )}
+      </div>
 
-        <section>
-          <h2>The takeaway</h2>
-          <p>{slide.takeaway}</p>
-        </section>
-
-        <section>
-          <h2>Built with</h2>
-          <ul className="tool-list">
-            {slide.tools.map((tool) => (
-              <li key={tool}>{tool}</li>
-            ))}
-          </ul>
-        </section>
-
-        <p>{slide.credit}</p>
-
-        <div className="project-links">
-          {slide.links.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              target="_blank"
-              rel="noreferrer"
-            >
-              {link.label}
-            </a>
-          ))}
+      {hasPreview && (
+        <div className="project-side">
+          <ProjectPreview slide={slide} />
         </div>
-      </div>
-
-      <div className="project-side">
-        <ProjectPreview slide={slide} />
-      </div>
+      )}
     </div>
   );
 }
