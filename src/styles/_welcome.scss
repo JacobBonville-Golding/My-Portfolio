@@ -135,11 +135,6 @@
   background: var(--content);
 }
 
-.skip-greeting:focus-visible {
-  outline: 3px solid var(--accent);
-  outline-offset: 3px;
-}
-
 .welcome-fallback-photo {
   display: none;
 }
