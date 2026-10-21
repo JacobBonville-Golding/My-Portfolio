@@ -246,6 +246,13 @@ function toggleMotion() {
     return nextValue;
   });
 }
+
+function selectSlide(index) {
+  setActiveIndex(index);
+  window.requestAnimationFrame(() => {
+    document.getElementById("slide-title")?.focus();
+  });
+}
   const slide = slides[activeIndex];
 
   return (
@@ -256,13 +263,13 @@ function toggleMotion() {
     <DesktopSidebar
       slides={slides}
       activeIndex={activeIndex}
-      onSelect={setActiveIndex}
+      onSelect={selectSlide}
       theme={theme}
     />
     <PortfolioHeader
       slides={slides}
       activeIndex={activeIndex}
-      onSelect={setActiveIndex}
+      onSelect={selectSlide}
       theme={theme}
       onThemeToggle={toggleTheme}
       motionEnabled={motionEnabled}
@@ -306,12 +313,12 @@ function toggleMotion() {
         <button
           type="button"
           disabled={activeIndex === 0}
-          onClick={() => setActiveIndex(activeIndex - 1)}
+          onClick={() => selectSlide(activeIndex - 1)}
         >
           Previous
         </button>
 
-        <span aria-live="polite">
+        <span>
           {String(activeIndex).padStart(2, "0")} /{" "}
           {String(slides.length - 1).padStart(2, "0")}
         </span>
@@ -319,7 +326,7 @@ function toggleMotion() {
         <button
           type="button"
           disabled={activeIndex === slides.length - 1}
-          onClick={() => setActiveIndex(activeIndex + 1)}
+          onClick={() => selectSlide(activeIndex + 1)}
         >
           Next
         </button>

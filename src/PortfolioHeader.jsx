@@ -19,9 +19,6 @@ function PortfolioHeader({
     function selectSlide(index) {
         onSelect(index);
         setMenuOpen(false);
-        window.requestAnimationFrame(() => {
-            document.getElementById("slide-title")?.focus();
-        });
     }
 
     function handleKeyDown(event) {
