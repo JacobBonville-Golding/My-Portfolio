@@ -7,9 +7,9 @@ function MotionToggle({ motionEnabled, onToggle, variant = "floating" }) {
       className={`motion-toggle motion-toggle--${variant}`}
       type="button"
       onClick={onToggle}
-      aria-label={variant === "menu" ? undefined : "Background animation"}
+      aria-label={variant === "menu" ? undefined : "Decorative animation"}
       aria-pressed={motionEnabled}
-      title={`${action} background animation`}
+      title={`${action} decorative animation`}
     >
       <svg viewBox="0 0 100 100" aria-hidden="true" focusable="false">
         {motionEnabled ? (
@@ -21,7 +21,7 @@ function MotionToggle({ motionEnabled, onToggle, variant = "floating" }) {
           <path d="M34 24 76 50 34 76Z" />
         )}
       </svg>
-      {variant === "menu" && <span>Background animation: {state}</span>}
+      {variant === "menu" && <span>Decorative animation: {state}</span>}
     </button>
   );
 }

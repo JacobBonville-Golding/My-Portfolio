@@ -259,7 +259,7 @@ function selectSlide(index) {
     <>
     <div className="animated-background" aria-hidden="true" />
     <div className="site-shell">
-    <PawCursor theme={theme} />
+    <PawCursor theme={theme} motionEnabled={motionEnabled} />
     <DesktopSidebar
       slides={slides}
       activeIndex={activeIndex}
@@ -285,7 +285,7 @@ function selectSlide(index) {
         <div className="frame-stack">
           <article className="project-frame" aria-labelledby="slide-title">
             {slide.id === "welcome" ? (
-              <GreetingTitle />
+              <GreetingTitle motionEnabled={motionEnabled} />
             ) : (
               <h1 id="slide-title" tabIndex={-1}>{slide.title}</h1>
             )}
@@ -298,7 +298,10 @@ function selectSlide(index) {
               ref={projectCardRef}
             >
               {slide.id === "welcome" && (
-                <WelcomeContent introduction={slide.introduction} />
+                <WelcomeContent
+                  introduction={slide.introduction}
+                  motionEnabled={motionEnabled}
+                />
               )}
               {slide.id === "about" && <AboutDetails slide={slide} />}
               {slide.id !== "welcome" && slide.id !== "about" && (

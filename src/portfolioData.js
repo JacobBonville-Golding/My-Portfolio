@@ -128,7 +128,7 @@ export const slides = [
       {
         title: "Motion controls",
         description:
-          "The ambient background includes a visible pause control, and the selected motion preference is saved for future visits.",
+          "Decorative animation includes a visible pause control, and the selected motion preference is saved for future visits.",
       },
       {
         title: "Reduced-motion support",

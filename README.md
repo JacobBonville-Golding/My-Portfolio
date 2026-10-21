@@ -38,7 +38,7 @@ The portfolio supports keyboard navigation, visible focus indicators, meaningful
 To keep these effects accessible:
 
 - The site respects `prefers-reduced-motion`.
-- Background animation includes a keyboard-accessible pause/play control.
+- Decorative animation includes a keyboard-accessible pause/play control.
 - Decorative motion is hidden from assistive technology.
 - Pointer effects are disabled on touch devices and compact screens.
 - The welcome animation can be skipped and provides stable screen-reader text.

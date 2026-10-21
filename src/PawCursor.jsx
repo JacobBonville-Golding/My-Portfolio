@@ -21,7 +21,7 @@ function cursorStatus(target, pressed) {
   return "default";
 }
 
-function PawCursor({ size = 46, theme = "light" }) {
+function PawCursor({ size = 46, theme = "light", motionEnabled }) {
   const svgRef = useRef(null);
   const mouse = useRef({ x: -100, y: -100 });
   const previous = useRef({ x: -100, y: -100 });
@@ -33,6 +33,7 @@ function PawCursor({ size = 46, theme = "light" }) {
   const [motionDisabled, setMotionDisabled] = useState(() =>
     window.matchMedia("(max-width: 760px), (max-height: 500px), (pointer: coarse), (prefers-reduced-motion: reduce)").matches,
   );
+  const cursorDisabled = motionDisabled || !motionEnabled;
 
   useEffect(() => {
     const motionQuery = window.matchMedia(
@@ -56,7 +57,7 @@ function PawCursor({ size = 46, theme = "light" }) {
 
   useEffect(() => {
     const svg = svgRef.current;
-    if (!svg || motionDisabled) return undefined;
+    if (!svg || cursorDisabled) return undefined;
 
     const scale = (value) => value * (size / 80);
     const paw = new Zdog.Illustration({ element: svg });
@@ -192,9 +193,9 @@ function PawCursor({ size = 46, theme = "light" }) {
       cancelAnimationFrame(frame.current);
       paw.remove();
     };
-  }, [size, theme, motionDisabled]);
+  }, [size, theme, cursorDisabled]);
 
-  if (motionDisabled) return null;
+  if (cursorDisabled) return null;
 
   return (
     <>
