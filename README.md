@@ -47,6 +47,8 @@ To keep these effects accessible:
 
 See the [complete accessibility notes](docs/accessibility.md).
 
+See the [manual accessibility test results](docs/accessibility-test-results.md).
+
 ## Project structure
 
 - `src/main.jsx` — application state and layout
@@ -56,6 +58,7 @@ See the [complete accessibility notes](docs/accessibility.md).
 - `src/media/` — portfolio imagery
 - `public/` — favicon and other public assets
 - `docs/accessibility.md` — detailed animation and accessibility notes
+- `docs/accessibility-test-results.md` — recorded manual accessibility checks
 
 ## Credits
 
