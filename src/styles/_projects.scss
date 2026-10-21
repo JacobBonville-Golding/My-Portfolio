@@ -30,7 +30,8 @@
 }
 
 .project-layout--text-only {
-  grid-template-columns: minmax(0, 58rem);
+  width: 100%;
+  grid-template-columns: minmax(0, 1fr);
 }
 
 .project-copy section {
@@ -78,6 +79,10 @@
 @media (min-width: 760px) {
   .project-layout {
     grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+  }
+
+  .project-layout.project-layout--text-only {
+    grid-template-columns: minmax(0, 1fr);
   }
 
   .accessibility-feature-grid {
