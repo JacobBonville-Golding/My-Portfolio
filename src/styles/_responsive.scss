@@ -237,3 +237,29 @@
     overflow-y: auto;
   }
 }
+
+@media (max-height: 500px) {
+  .site-shell {
+    height: auto;
+    min-height: 100svh;
+  }
+
+  .page {
+    min-height: auto;
+    padding-block: 0.5rem 1rem;
+  }
+
+  .frame-stack {
+    height: auto;
+    max-height: none;
+  }
+
+  .project-frame {
+    height: auto;
+  }
+
+  .project-card {
+    min-height: 12rem;
+    overflow-y: visible;
+  }
+}
