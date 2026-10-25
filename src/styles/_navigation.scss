@@ -95,6 +95,18 @@
   background: var(--layer);
 }
 
+.menu-contact-links {
+  display: grid;
+  gap: 0.25rem;
+  padding: 0.5rem;
+  border-top: 1px solid var(--line);
+}
+
+.menu-contact-links a {
+  min-height: 44px;
+  padding: 0.65rem 0.5rem;
+}
+
 .step-nav button {
   min-height: 44px;
   padding: 0.65rem 1rem;

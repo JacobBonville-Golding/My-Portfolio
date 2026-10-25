@@ -1,5 +1,6 @@
 import catLogo from "./media/cats/cat-white.png";
 import blackCatLogo from "./media/cats/cat-black.png";
+import { contactLinks } from "./contactLinks.js";
 
 function PawStamp({ x, y, angle }) {
   return (
@@ -76,14 +77,22 @@ function DesktopSidebar({ slides, activeIndex, onSelect, theme }) {
             </button>
 
             <footer className="sidebar-footer">
-                <a 
-                href="https://github.com/JacobBonville-Golding?tab=repositories"
-                target="_blank"
-                rel="noreferrer"
-                >
-                    GitHub <span aria-hidden="true">↗</span>
-                    <span className="screen-reader-only"> (opens in a new tab)</span>
-                </a>
+                {contactLinks.map((link) => (
+                    <a
+                        key={link.href}
+                        href={link.href}
+                        target={link.external ? "_blank" : undefined}
+                        rel={link.external ? "noreferrer" : undefined}
+                    >
+                        {link.label}
+                        {link.external && <span aria-hidden="true"> ↗</span>}
+                        {link.external && (
+                            <span className="screen-reader-only">
+                                {" "}(opens in a new tab)
+                            </span>
+                        )}
+                    </a>
+                ))}
                 <small>© {new Date().getFullYear()} Jacob Bonville-Golding</small>
             </footer>
         </aside>

@@ -169,7 +169,7 @@ export const slides = [
     facts: [
       "Based near Vancouver",
       "Builds with JavaScript and WordPress",
-      "Favourite project: LightBoxd",
+      "Favourite project: This portfolio and learning about accessibility",
       "Works well under feline supervision",
     ],
   },

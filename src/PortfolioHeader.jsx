@@ -3,6 +3,7 @@ import catLogo from "./media/cats/cat-white.png";
 import blackCatLogo from "./media/cats/cat-black.png";
 import ThemeToggle from "./ThemeToggle.jsx";
 import MotionToggle from "./MotionToggle.jsx";
+import { contactLinks } from "./contactLinks.js";
 
 function PortfolioHeader({
     slides,
@@ -89,6 +90,24 @@ function PortfolioHeader({
                         setMenuOpen(false);
                     }}
                 />
+                <div className="menu-contact-links" aria-label="Contact links">
+                    {contactLinks.map((link) => (
+                        <a
+                            key={link.href}
+                            href={link.href}
+                            target={link.external ? "_blank" : undefined}
+                            rel={link.external ? "noreferrer" : undefined}
+                        >
+                            {link.label}
+                            {link.external && <span aria-hidden="true"> ↗</span>}
+                            {link.external && (
+                                <span className="screen-reader-only">
+                                    {" "}(opens in a new tab)
+                                </span>
+                            )}
+                        </a>
+                    ))}
+                </div>
             </nav>
         </header>
     );
