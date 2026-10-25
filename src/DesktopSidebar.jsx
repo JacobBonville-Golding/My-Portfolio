@@ -1,5 +1,5 @@
-import catLogo from "./media/cats/cat-white.png";
-import blackCatLogo from "./media/cats/cat-black.png";
+import catLogo from "./media/cats/cat-white.webp";
+import blackCatLogo from "./media/cats/cat-black.webp";
 import { contactLinks } from "./contactLinks.js";
 
 function PawStamp({ x, y, angle }) {

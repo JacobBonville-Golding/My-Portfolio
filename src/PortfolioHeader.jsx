@@ -1,6 +1,6 @@
 import { useRef, useState } from "react";
-import catLogo from "./media/cats/cat-white.png";
-import blackCatLogo from "./media/cats/cat-black.png";
+import catLogo from "./media/cats/cat-white.webp";
+import blackCatLogo from "./media/cats/cat-black.webp";
 import ThemeToggle from "./ThemeToggle.jsx";
 import MotionToggle from "./MotionToggle.jsx";
 import { contactLinks } from "./contactLinks.js";

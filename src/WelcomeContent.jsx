@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
-import blackCat from "./media/cats/sitting-cat-black.png";
-import whiteCat from "./media/cats/sitting-cat-white-clean.png";
+import blackCat from "./media/cats/sitting-cat-black.webp";
+import whiteCat from "./media/cats/sitting-cat-white-clean.webp";
 import stebanPhoto from "./media/cats/steban-480.webp";
 import stebanPhotoLarge from "./media/cats/steban-960.webp";
 
